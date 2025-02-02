@@ -1,0 +1,253 @@
+Web Service
+===========
+
+What?
+=====
+Software system designed to support the inter-operable machine-to-machine interaction over a network.
+
+3 Keys
+======
+1. Designed for machine-to-machine [or Application-to-Application] interaction
+2. Should be inter-operable (NOT platform dependent)
+3. Should allow communication over a network.
+
+How?
+====
+How does the data exchange between applications takes place?
+The data exchange done via Request and Response mode.
+
+How can we make the web services platform independent?
+The important thing for a web service to be independent is, the request and response should also
+be platform independent.
+
+2 Popular Formats
+=================
+1. XML
+2. JSON
+
+How does the application X knows the format of Request & Response?
+The answer is Service Definition. Every WebService should provide the service definition.
+Service Definition takes about,
+1. Request/Response Formats
+2. Request Structure
+3. Response Structure
+4. Endpoint
+
+Key Terminologies
+=================
+1. Request & Response
+2. Message Exchange Format
+   a. XML & JSON
+3. Service Provider / Server
+4. Service Consumer / Client
+5. Service Definition
+6. Transport 
+   a. HTTP & MQ
+
+1. Request & Response
+=====================
+Request - Input / Data sent from Application to WebService.
+Response - Output / Data sent back from WebService to Application.
+
+2. Message Exchange Format
+==========================
+   a. XML & JSON
+The Request & Response are sent inform of Messages which is either in XML
+or JSON format.
+
+3. Service Provider / Server
+============================
+Server on which service is hosted.
+
+4. Service Consumer / Client
+============================
+Application which requests the webservice.
+
+5. Service Definition
+=====================
+The contract between the Service Provider & Service Consumer.
+
+6. Transport 
+============
+   a. HTTP & MQ
+HTTP - The communication takes place over the web.
+MQ - The Service Requester place the request on the (Message) Queue and the Service Provider
+would be listening on the Queue. Whenever requests comes in, it takes and proccess it. Create
+the response and put it back to the Requester.
+
+WebService Groups
+=================
+1. SOAP
+2. Rest 
+
+SOAP
+====
+SOAP [Simple Object Access Protocol] - Earlier Abbreviation. But no longer. Its just type of
+webservice.
+
+Characteristics
+===============
+1. Format
+	a. SOAP XML Request
+	b. SOAP XML Response
+2. Transport
+	a. SOAP over MQ
+	b. SOAP over HTTP
+3. Service Definition
+	a. WSDL
+
+A WSDL defines the followiings.
+1. Endpoint
+2. All Operations
+3. Request Structure
+4. Response Structure
+
+The typical SOAP message has followings parts.
+1. SOAP Envelope
+2. SOAP Header
+3. SOAP Body
+
+Rest [Representational State Transfer]
+====
+Whenever we develop a RESTful webservices, we always focuses on / thinking about the Resources.
+Resource
+========
+1. A resource has an URI (Uniform Resource Identifier).
+2. A resource can have different formats as below.
+	a. XML
+	b. HTML
+	c. JSON
+	
+Characteristics
+===============
+1. Data Exchange Format
+	a. No Restriction. JSON is popular.
+2. Transport
+	a. Only HTTP
+3. Service Definition
+	NO standard. WADL/Swagger..
+WADL - Web Application Development Language.
+
+REST vs SOAP [Its not an Apple-to-Apple comparison]
+============
+1. Restriction vs Architectural Approach
+2. Data Exchange Format
+3. Service Definition
+4. Transport
+5. Ease of implementation
+
+Spring Framework
+================
+1. Tight & Loose Coupling
+2. IOC Container
+3. Application Context
+4. Component Scan
+5. Dependency Injection
+6. Spring Beans
+7. Auto Wiring
+
+Spring Terminologies
+====================
+@Component
+==========
+Class managed by Spring Framework
+
+Dependency: SPGameRunner needs SPGameConsole Impl.
+	SPGameConsole Impl(Ex: SPMarioGame) is a dependency of SPGameRunner.
+
+ComponentScan
+=============
+Spring scans the packages. By default, it will take the current package.
+We can also provide the packages to scan.
+@ComponentScan({"com.qa.base", "com.qa.test"})
+
+Dependency Injection
+====================
+Identify Beans, their dependencies and wire them together (provides IOC - Inversion of Control)
+
+Spring Beans
+============
+An object managed by Spring Framework.
+
+IoC Container
+=============
+Manages the life cycle of beans and dependencies.
+Types
+=====
+1. ApplicationContext (Complex)
+2. BeanFactory (Simple Features - Rarely used)
+
+AutoWiring
+==========
+The process of wiring in dependencies for a Spring Bean.
+
+@Primary - Is used when we have multiple components to give priority to run the component.
+
+Spring Dependency Injection Types
+=================================
+Constructor Based - Dependencies are set by creating the Bean using its Constructor.
+Setter Based - Dependencies are set by calling Setter methods on your beans.
+Fields - No Setter / Constructor. Dependency is injected using reflection.
+
+Spring Team recommends Constructor-based injection as dependencies are automatically set
+when object is created.
+
+Spring Modules
+==============
+Spring Framework is divided into modules.
+1. Core: IoC Container etc
+2. Testing: Mock Objects, Spring MVC Test etc
+3. Data Access: Transactions, JDBC, JPA etc
+4. Web Servlet: Spring MVC etc
+5. Web Reactive: Spring WebFlux etc
+6. Integration: JMS etc
+
+Spring Pojects [Spring keeps evolving (REST API > Microservices > Cloud)
+==============
+Spring Boot: Most popular framework to build microservices.
+Spring Cloud: Build cloud native applications.
+Spring Data: Integrate the same way with different types of databases: NoSQL and Relational.
+Spring Integration: Address challenges with integration with other applications.
+Spring Security: Secure you web application or REST API or microservice.
+
+World Before Spring Boot
+========================
+1. Complex dependency management
+2. Complex configurations for Web applications [web.xml].
+3. Complex Spring Configurations (Manage of Spring Beans) [Component Scan, View Resolver].
+4. Non-functional Requirements - Logging, Error handling, and Monitoring.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
