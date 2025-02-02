@@ -346,6 +346,115 @@ Spring Boot vs Spring MVC vs Spring - What's in it?
 		3. Logging and Error Handling
 		4. Profiles and ConfigurationProperties
 
+Explore POM.xml
+===============
+1. Let's explore Project Object Model - pom.xml
+	a. Maven dependencies: Frameworks & Libraries used in a project.
+		1. Example: spring-boot-starter-web & spring-boot-starter-test
+		Why are there so many dependencies in the Classpath?
+			a. Answer: Transitive Dependencies.
+			b. Remember - Spring Dependencies are Different.
+	b. Maven Build -> help:effective-pom
+	c. Parent POM: spring-boot-starter-parent
+		1. Dependency Management
+		2. Properties: java.version, plugins, and configurations
+	d. Name of our project: groupId + artifactId
+		1. groupId: Similar to package name
+		2. artifactId: Similar to class name
+		
+2. Activity: help:effective-pom, dependency:tree, & Eclipse UI
+
+Maven Build LifeCycle
+=====================
+1. Build LifeCycle is a sequence of steps.
+	a. Validate
+	b. Compile
+	c. Test
+	d. Package
+	e. Integration Test
+	f. Verify
+	g. Install
+	h. Deploy
+
+How does Maven works?
+=====================
+1. Maven follows Convention over Configuration.
+	a. Pre defined folder structure
+	b. Almost all Java projects follow Maven structure (Consistency)
+2. Maven Central Repository contains jars (and others) indexed by artifactId
+   and groupId.
+	a. Stores all the versions of dependencies.
+	b. repositories > repository
+	c. pluginRepositories > pluginRepository
+3. When a dependency is added to POM.xml, Maven tries to download the dependency
+	a. Downloaded dependencies are stored inside your maven local repository.
+	b. Local Repository: a temp folder on your machine where maven stores the 
+	   jar and dependency files that are downloaded from Maven Repository.
+
+Important Maven Commands
+========================
+1. mvn --version
+2. mvn compile: Compile source files
+3. mvn test-compile: Compile test files
+	a. Observe Carefully: This will also compile source
+4. mvn clean: Delete target directory
+5. mvn test: Run unit tests
+6. mvn package: Create a jar
+7. mvn help:effective-pom
+8. mvn dependency:tree
+
+Spring Versions
+===============
+1. Version Scheme - MAJOR.MINOR.PATCH[-MODIFIER]
+	a. Major: Significant amount of work to upgrade (10.0.0 to 11.0.0)
+	b. Minor: Little to no work to upgrade (10.1.0 to 10.2.0)
+	c. Patch: No work to upgrade (10.5.4 to 10.5.5)
+	d. Modifier: Optional Modifier.
+
+Gradle
+======
+1. Goal: Build, automate and deliver better software, faster.
+	a. Build Anything: Cross-Platform Tool
+		1. Java, C/C++, JavaScript, Python,..
+	b. Automate Everything: Completely Programmable
+		1. Complete flexibility
+		2. Uses a DSL [Supports Groovy & Kotlin]
+	c. Deliver Faster: Blazing-fast builds
+		1. Compile avoidance to advanced caching
+		2. Can speed up Maven builds by up to 90%
+			a. Incrementality - Gradle runs only what is necessary
+			   Example: Compiles only changed files.
+			b. Build Cache - Reuses the build outputs of other Gradle builds with same inputs.
+2. Same Project layout as Maven.
+3. IDE support is still evolving.
+
+Top 3 Java Plugins for Gradle:
+	1. Java Plugin: Java compilation + testing + bundling capabilities
+		a. Default layout
+			1. src/main/java
+			2. src/main/resources
+			3. src/test/java
+			4. src/test/resources
+		b. Key task: Build
+		Go to Eclipse -> Run Configuration -> Choose Gradle Task -> Rename it.
+		Add task and name it as build, Apply and Run. Bin and Build folders
+		will be created after succesful build run.
+	2. Dependency Management: Maven-like dependency management
+		a. group: 'org.springframework', name:'spring-core', version:'10.0.3.RELEASE'
+		or Shortcut:'org.springframework:spring-core:10.0.3.RELEASE'
+	3. Spring Boot Gradle Plugin: Spring Boot Support in Gradle
+		a. Package executable SpringBoot jar, Container Image (bootJar, bootBuildImage)
+		b. Use dependency management enabled by spring-boot-dependencies
+			1. No need to specify dependency version
+			Example: Implementation('org.springframework.boot:spring-boot-starter')
+		
+	
+		
+
+
+
+
+
 
 
 
