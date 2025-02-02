@@ -217,6 +217,140 @@ World Before Spring Boot
 3. Complex Spring Configurations (Manage of Spring Beans) [Component Scan, View Resolver].
 4. Non-functional Requirements - Logging, Error handling, and Monitoring.
 
+SpringBoot Goals
+================
+1. Helps you build Production Ready apps Quickly.
+	a. Build Quickly
+		1. Spring Initializr
+		2. Spring Boot Starter Projects
+		3. Spring Boot Auto Configuration
+		4. Spring Boot DevTools
+	b. Be Product Ready
+		1. Logging
+		2. Different Configuration for Different Environments
+			Profiles, ConfigurationProperties
+		3. Monitoring (Spring Boot Actuator)
+
+Spring Boot Starter Projects
+============================
+1. I need a lot of frameworks to build application features:
+	a. Build a REST API: I need Spring, Spring MVC, Tomcat, JSON conversion..
+	b. Write Unit Tests: I need Spring Test, Junit, Mockito,..
+2. How can I group them and make it easy to build applications?
+	a. Starters: Convenient dependency descriptors for different feature.
+3. Spring Boot provides variety of Starter projects:
+	a. Web Application & REST API - Spring Boot Starter Web (spring-webmvc,
+	spring-web, spring-boot-starter-tomcat, spring-boot-starter-json)
+	b. Unit Tests - Spring Boot Starter Test
+	c. Talk to Database using JPA - Spring Boot Starter Data JPA
+	d. Talk to Database using JDBC - Spring Boot Starter JDBC
+	e. Secure your web application or REST API - Spring Boot Starter Security
+
+Spring Boot Auto Configuration
+==============================
+Need lot of configuration to build Spring app:
+-> Component Scan, DispatcherServlet, Data Sources, JSON Conversion..
+
+How can it be Simplified?
+=========================
+Auto Configuration: Automated configuration for your app.
+Decided based on:
+	1. Which frameworks are in the Class Path?
+	2. What is the existing configuration (Annotations etc)?
+Example: Spring Boot Starter Web
+1. DispatcherServlet
+2. Embedded Servlet Container - Tomcat (EmbeddedWebServerFactoryCustomizerAutoConfiguration)
+3. Default Error Pages (ErrorMvcAutoConfiguration)
+4. Bean<->JSON (JacksonHttpMessageConvertersConfiguration)
+
+Spring Boot DevTools
+====================
+1. Increase Developer Productivity
+2. Why do you need to restart the server manually for every code change?
+	a. Add DevTools dependency to your POM.xml, then for every change 
+	server restarts automatically.
+3. Remember: For POM.xml dependency changes, you will need to restart
+   server manually.
+ 
+Production Ready
+================
+Managing App. Configuration using Profiles
+
+1. Applications have different environments: Dev, QA. Stage, Prod,..
+2. Different environments need different configuration:
+	a. Different Databases
+	b. Different Web Services
+3. How can you provide different configuration for different environments?
+	a. Profiles: Environment specific configuration
+	
+Configuration Properties
+=======================
+To specify configurations for specific services / endpoints in application.properties.
+Creat a config class for the same and have it has POJO style.
+Add the below annotations
+@ConfigurationProperties(prefix = "currency-service")
+@Component
+Then create a controller class and invoke the config class.
+
+Simplify Deployment with Spring Boot Embedded Servers
+=====================================================
+1. How do you deploy your application?
+	a. Install Java
+	b. Install Web/Application Server [Tomcat/WebSphere/WebLogic etc]
+	c. Deploy the application WAR (Web Archive)
+		This is the OLD WAR approach
+		Complex to setup
+2. Embedded Server - Simpler Alternative
+	a. Install Java
+	b. Run JAR file
+	c. Make JAR not WAR
+	d. Embedded Server Examples
+		1. spring-boot-starter-tomcat
+		2. spring-boot-starter-jetty
+		3. spring-boot-starter-undertow
+
+Monitoring Apps - Spring Boot Actuator
+======================================
+1. Monitor and manage your application in your production.
+2. Provides a number of endpoints:
+	a. beans - Complete list of Spring beans in your app.
+	b. health - Application health information
+	c. metrics - Application metrics.
+	d. mappings - Details around Request Mappings.
+
+Add the Spring Boot Starter Actuator dependency to your POM.xml
+Navigate to http://localhost:8080/actuator
+By default, it will show health endpoint only.
+
+To have other endpoints, add it in your application.properties
+
+Understanding Spring Boot Vs Spring MVC vs Spring
+=================================================
+Spring Boot vs Spring MVC vs Spring - What's in it?
+1. Spring Framework: Dependency Injection.
+	a. @Component, @AutoWired, Component Scan, etc..
+	b. Jusr Dependency Injection is NOT sufficient (You need other frameworks to build apps)
+		1. Spring Modules and Spring Projects: Extend Spring Eco System
+			a. Provide good integration with other frameworks(Hibernate/JPA, JUnit & Mickito for Unit Testing)
+
+2. Spring MVC (Spring Module): Simplify building web apps and REST API
+	a. Building web applications with structs was very complex
+	b. @Controller, @RestController, @RequestMapping("/endpoint")
+
+3. Spring Boot (Spring Project): Build PRODUCTION-READY apps QUICKLY
+	a. Starter Projects - Make it easy to build variety of apps.
+	b. Auto Configuration - Eliminate configuration to setup Spring, Spring MVC, and other frameworks!
+	c. Enable non-functional requirements:
+		1. Actuator: Enables Advanced Monitoring of applications.
+		2. Embedded Server: No need for separate application servers!
+		3. Logging and Error Handling
+		4. Profiles and ConfigurationProperties
+
+
+
+
+	
+		
 
 
 
