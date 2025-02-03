@@ -225,7 +225,7 @@ SpringBoot Goals
 		2. Spring Boot Starter Projects
 		3. Spring Boot Auto Configuration
 		4. Spring Boot DevTools
-	b. Be Product Ready
+	b. Be Production Ready
 		1. Logging
 		2. Different Configuration for Different Environments
 			Profiles, ConfigurationProperties
@@ -329,7 +329,7 @@ Understanding Spring Boot Vs Spring MVC vs Spring
 Spring Boot vs Spring MVC vs Spring - What's in it?
 1. Spring Framework: Dependency Injection.
 	a. @Component, @AutoWired, Component Scan, etc..
-	b. Jusr Dependency Injection is NOT sufficient (You need other frameworks to build apps)
+	b. Just Dependency Injection is NOT sufficient (You need other frameworks to build apps)
 		1. Spring Modules and Spring Projects: Extend Spring Eco System
 			a. Provide good integration with other frameworks(Hibernate/JPA, JUnit & Mickito for Unit Testing)
 
@@ -448,8 +448,43 @@ Top 3 Java Plugins for Gradle:
 			1. No need to specify dependency version
 			Example: Implementation('org.springframework.boot:spring-boot-starter')
 		
+Soap Project Creation
+=====================
+Step 1
+======
+https://start.spring.io/
+
+1. Select Spring Milestone version and Maven
+2. Provide Group Id & Artifact Id
+3. Add dependencies - Spring Web Services, JPA, and H2
+4. Click on Generate button
+
+Step 2
+======
+Import the extracted project into Eclipse.
+
+Step 3
+======
+Create simple SOAP Web Service using Spring Web Service.
+
+Here, we need a Web Service Client and Web Service Provider. The communication between them 
+is done using SOAP Messages.
+
+Things to implement
+===================
+1. Service Definition 
+	a. XML
+	b. XSD
+	c. WSDL [Generated using Spring Web Service]
+2. XML Java Binding [ To convert the incoming SOAP message into Object.Also, send the Response Object
+   back in SOAP message format.
+	a. JAXB
+3. Framework Configuration
+	a. Endpoint
+	b. WSDL-Generation
+4. SOAP Web Service Client
+	a. Wizdler Chrome Plugin
 	
-		
 
 
 
