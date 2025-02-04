@@ -486,6 +486,18 @@ Things to implement
 	a. Wizdler Chrome Plugin
 	
 
+Soap Web Service Starter Project Setup
+======================================
+1. Created Request & Response structure using .xml file.
+2. Created XSD for Request and Response.
+3. Updated POM.xml file with JAXB2 Maven plugin.
+	a. JAXB plugin used to converted the XSD created into Java Object.
+	b. XSD file should be placed inside the src/main/resources.
+	c. Java Source Folder should be selected as src/main/java.
+	d. Clear Folder option should be FALSE. Otherwise, it will clear src/main/java folder.
+4. Reference - https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.4/example_xjc_basic.html
+5. After updating the plugin, it will generate the java class files.
+6. Create a Endpoint class and map the configurations for Request, and Response.
 
 
 
