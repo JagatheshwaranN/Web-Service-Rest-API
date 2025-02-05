@@ -498,6 +498,16 @@ Soap Web Service Starter Project Setup
 4. Reference - https://www.mojohaus.org/jaxb2-maven-plugin/Documentation/v2.4/example_xjc_basic.html
 5. After updating the plugin, it will generate the java class files.
 6. Create a Endpoint class and map the configurations for Request, and Response.
+7. Create WebServiceConfig class file and created the ServlerRegistationBean method to Register
+   MessageDispatcherServlet and mapped the Endpoint to the Servlet.
+8. Next, using the xsd file, we need to create the WSDL file in /ws/course.wsdl
+9. 2 Things needed is PortType and NameSpace.
+10. Created XsdSchema to mention the schema file.
+11. DefaultWsdlDefinition created with Port, Namespace, URI, and Schema details. 
+12. Added wsdl4j dependency in POM.xml file.
+13. Run the Project and got the URI specified. [localhost:8080/ws/courses.wsdl]
+14. Installed Boomerang Extension. Executed the First SOAP Web Service.
+
 
 
 
