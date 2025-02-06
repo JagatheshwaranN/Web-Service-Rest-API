@@ -531,9 +531,60 @@ Most of the WSDL contains the below items.
 5. Service
 	It defines the location. How are the clients going to use this service.
 
+22. Create the XSD for DeleteCourseDetails.
+23. Move to CourseDetailsEndpoint class and create a method to hande delete of courses.
+
+========================================
+If you get an error java.lang.IllegalAccessError: class com.sun.xml.wss.impl.SecurableSoapMessage
+cannot access class com.sun.org.apache.xml.internal.security.Init  => Open up the package for unnamed
+modules using the following command --add-opens=java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED
+
+The screenshots below show how you can configure VM arguments to add 
+--add-opens=java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED
+========================================
+
+Security
+========
+1. We are implementing the security for the SOAP WebService.
+	-Authentication
+	-Digital Signatures
+	-Certificates
+
+2. Implementation -> XWSS - XML and Web Services Security.
+	a. Security Policy
+	b. XwsSecurityInterceptor
 
 
+Implementation Steps
+====================
+1. Add the security related dependencies.
+2. Update the WebServiceConfig file with Wss4jSecurityInterceptor implementation.
+3. Followed by SimplePasswordValidationCallbackHandler implementation.
+4. Extends WsConfigurerAdapter class and override addInterceptors method and add
+   the Wss4jSecurityInterceptor.
+5. Now, the request can't be accessed without proper user credentials.
+6. Below sample request has Header section with security details.
 
+Sample Request
+==============
+<x:Envelope
+    xmlns:x="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:cou="http://learn-everyday.com/courses"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">    
+    <x:Header>
+        <wsse:Security>
+            <wsse:UsernameToken>
+                <wsse:Username>admin</wsse:Username>
+                <wsse:Password>pa55W0Rd</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </x:Header>
+    <x:Body>
+        <cou:GetCourseDetailsRequest>
+            <cou:id>2</cou:id>
+        </cou:GetCourseDetailsRequest>
+    </x:Body>
+</x:Envelope>
 
 
 

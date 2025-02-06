@@ -11,6 +11,10 @@ import com.learn_everyday.learn_soap.soap_course_management.soap.bean.Course;
 @Component
 public class CourseDetailsService {
 	
+	public enum Status {
+		SUCCESS, FAILURE;
+	}
+	
 	private static List<Course> courses = new ArrayList<>();
 	
 	static {
@@ -43,17 +47,17 @@ public class CourseDetailsService {
 	
 	// DeleteCourse
 	// Course deleteById(int id)
-	public int deleteById(int id) {
+	public Status deleteById(int id) {
 		// If we use For Each loop and delete the item, there might be chance of ConcurrentModificationException.
 		Iterator<Course> iterator = courses.iterator();
 		while(iterator.hasNext()) {
 			Course course = iterator.next();
 			if(course.getId() == id) {
 				iterator.remove();
-				return 1;
+				return Status.SUCCESS;
 			}
 		}
-		return 0;
+		return Status.FAILURE;
 	}
 	 
 	// Update Course

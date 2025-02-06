@@ -9,12 +9,16 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.learn_everyday.courses.CourseDetails;
+import com.learn_everyday.courses.DeleteCourseDetailsRequest;
+import com.learn_everyday.courses.DeleteCourseDetailsResponse;
 import com.learn_everyday.courses.GetAllCourseDetailsRequest;
 import com.learn_everyday.courses.GetAllCourseDetailsResponse;
 import com.learn_everyday.courses.GetCourseDetailsRequest;
 import com.learn_everyday.courses.GetCourseDetailsResponse;
 import com.learn_everyday.learn_soap.soap_course_management.soap.bean.Course;
+import com.learn_everyday.learn_soap.soap_course_management.soap.exception.CourseNotFoundException;
 import com.learn_everyday.learn_soap.soap_course_management.soap.service.CourseDetailsService;
+import com.learn_everyday.learn_soap.soap_course_management.soap.service.CourseDetailsService.Status;
 
 @Endpoint
 public class CourseDetailsEndpoint {
@@ -36,8 +40,10 @@ public class CourseDetailsEndpoint {
 	public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
 		
 		//Update of actual code
-		Course course = sevice.findById(request.getId());
-		
+		Course course = sevice.findById(request.getId());		
+		if(course ==  null) {
+			throw new CourseNotFoundException("Invalid Course Id " +request.getId());
+		}
 		return mapCourseDetails(course);
 	}
 	
@@ -49,7 +55,23 @@ public class CourseDetailsEndpoint {
 		List<Course> course = sevice.findAll();
 		return mapAllCourseDetails(course);
 	}
+
+	@PayloadRoot(namespace = "http://learn-everyday.com/courses", localPart = "DeleteCourseDetailsRequest")
+	@ResponsePayload
+	public DeleteCourseDetailsResponse deleteCourseDetailsRequest(@RequestPayload DeleteCourseDetailsRequest request) {
+		DeleteCourseDetailsResponse response = new DeleteCourseDetailsResponse();
+		Status status = sevice.deleteById(request.getId());
+		response.setStatus(mapStatus(status));
+		return response;
+	}
 	
+	private com.learn_everyday.courses.Status mapStatus(Status status) {
+		if(status == Status.FAILURE) {
+			return com.learn_everyday.courses.Status.FAILURE;
+		}
+		return com.learn_everyday.courses.Status.SUCCESS;
+	}
+
 	private GetCourseDetailsResponse mapCourseDetails(Course course) {
 		GetCourseDetailsResponse response = new GetCourseDetailsResponse();
 		response.setCourseDetails(mapCourse(course));
