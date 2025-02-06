@@ -507,6 +507,29 @@ Soap Web Service Starter Project Setup
 12. Added wsdl4j dependency in POM.xml file.
 13. Run the Project and got the URI specified. [localhost:8080/ws/courses.wsdl]
 14. Installed Boomerang Extension. Executed the First SOAP Web Service.
+15. Create a Bean class Course. Have variables, getters, constructors and toString.
+16. Now, the Bean has to come from Course Service. So, lets create a CourseDetailsService class.
+17. It should CRUD operation methods related to Course.
+18. Now, navigate back to CourseDetailsEndpoint class and update the values from the Course class.
+19. Hit the endpoints using the Boomerang and it should work fine.
+20. Create XSD for GetAllCourseDetails. 
+21. Move to CourseDetailsEndpoint class and create a method to hande list of courses.
+
+Learning about WSDL
+===================
+Most of the WSDL contains the below items.
+1. Type
+	It contains the schema details we created.
+2. Message
+	It defines the Requests and Responses we define inside the XSD.
+3. PortType
+	PortType is used to map the Request and Response to the operations.
+4. Binding
+	It defines the implementation. Here, we define the style and transport[It defines HTTP]
+	Style is document which is we are sending / receiving the Complete XML. Alternate for document
+	is RPC [Remote Procedure Call].
+5. Service
+	It defines the location. How are the clients going to use this service.
 
 
 
