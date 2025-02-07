@@ -586,6 +586,108 @@ Sample Request
     </x:Body>
 </x:Envelope>
 
+=========================================================================================
+RestFul WebService [Rest API]
+=============================
+1. Create a Spring Boot project using https://start.spring.io/ website.
+2. Add the dependencies - Spring Web, JPA, H2, Dev Tools.
+3. Import the poject into Eclipse.
+4. Create a package named helloword inside parent package.
+5. Create HelloWorldController class and add the helloworld REST web service code.
+6. Namely, RestController, RequestMapping with Request Method and Path.
+7. Hit the endpoint on the browser and checks its working.
+8. Create HelloWorldBean method, HelloWorldBean class and do the similar stuffs.
+
+What's happening in BackGround?
+===============================
+1. How are our requests handled?
+	a. DispatcherServlet - Front Controller Pattern.
+		1. Mapping Servlets: dispatcherServlet urls=[/]
+		2. Auto Configuration (DispatcherServletAutoConfiguration)
+2. How does HelloWorldBean object converted to JSON?
+	a. @ResponseBody + JacksonHttpMessageConverters
+		1. Auto Configuration (JacksonHttpMessageConvertersConfiguration)
+3. Who is configuring Error Mapping?
+	a. Auto Configuration (ErrorMvcAutoConfiguration)
+	
+Path Parameters
+===============
+/users/{id}/todos/{id}
+1. Created a method in HelloWorldController to support the Path parameter endpoint.
+
+Social Media REST API
+=====================
+Entities [Resources]
+====================
+1. Users
+2. Posts
+
+1. Create a package for User under parent package.
+2. Create a POJO class for User.
+3. Create a UserDAOService class for User where we have code to do CRUD operations.
+4. Also, it communicates with DB in later point of time.
+
+public User findOne(int id) {
+	Predicate<? super User> predicate = user -> user.getId().equals(id); 
+	return users.stream().filter(predicate).findFirst().get();
+}
+
+====================================
+package com.in28minutes.rest.webservices.restfulwebservices.exception;
+ 
+import java.time.LocalDateTime;
+ 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+ 
+ 
+@ControllerAdvice
+public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
+ 
+	@ExceptionHandler(Exception.class)
+	public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) throws Exception {
+		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), 
+				ex.getMessage(), request.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+ 
+	@ExceptionHandler(UserNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handleUserNotFoundException(Exception ex, WebRequest request) throws Exception {
+		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), 
+				ex.getMessage(), request.getDescription(false));
+		
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
+		
+	}
+ 
+	
+}
+================================
+
+1. Need to add a dependency - spring-boot-starter-validation.
+2. After adding the dependency, need to add the @Valid annotation in UserResource class where
+   CreateUserEndpoint is mapped.
+3. Then, need to add the jakarta validation annotation to the variables in User Bean class. 
+
+Advanced REST API Features
+==========================
+1. Documentation
+2. Content Negotiation
+3. Internationalization - i18n
+4. Versioning
+5. HATEOAS
+6. Static Filtering
+7. Dynamic Filtering 
+8. Monitoring
+
+
+
 
 
 
