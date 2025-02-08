@@ -686,12 +686,209 @@ Advanced REST API Features
 7. Dynamic Filtering 
 8. Monitoring
 
+Rest API Documentation
+======================
+1. 2011: Swagger Specification and Swagger Tools were introduced.
+2. 2016: Open API Specification created based on Swagger Spec.
+	a. Swagger Tools (ex: Swagger UI) continue to exist.
+3. OpenAPI Specification: Standard, Language-agnostic interface.
+	a. Discover and understand REST API.
+	b. Earlier called Swagger Specification.
+4. Swagger UI: Visualize and interact with your REST API.
+
+URL - https://springdoc.org/
+==============================================
+<dependency>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	<version>2.8.4</version>
+</dependency>
+==============================================
+Content Negotiation
+===================
+1. Same Resource - Same URI
+	a. However Different Respresentations are possible.
+		1. Example: Different Content Type - XML or JSON.
+		2. Example: Different Language - English or Dutch or French.
+2. How can a consumer tell the REST API provider what they want?
+	a. Content Negotiation
+3. Example: Accept Header (MIME Types - application/xml, application/json
+4. Example: Accept-Language Header (en, nl, fr,..)
+
+To get the User API response in XML format, add the below dependency
+
+
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
+
+Then use the Talend API Tester [Chrome Extension] to test the API response.
+
+Note: Commenting the Swagger and jackson dependencies as it causes problem with
+adavanced features.
+
+Internationalization [i18n]
+===========================
+1. How do you customize it to users around the World?
+	a. Internationalization - i18n
+2. Typically HTTP Request Header - Accept-Language is used
+	a. Accept-Language - Indicates natural language and locale that the consumer prefers.
+	b. Example: en - English (Good Morning)
+	c. Example: nl - Dutch (Goedemorgen)
+	d. Example: fr - French (Bonjour)
+
+To implemente i18n
+==================
+1. Create a file called messages.properties under src/main/resources.
+2. We will MessageSource for handling the i18n.
+3. We created the Locale to server the corresponding message. LocaleContextHolder gets
+   the header sent with request and will be used for processing the proper message.
+4. Create separate message.properties for all languages.
+5. Goto Talend API Tester. In header add the Accept-Language with value and test the API.
+
+Versioning
+===========
+URLs
+URI Versioning
+
+V1: http://localhost:8080/v1/person
+
+@GetMapping("/v1/person")
+
+V2: http://localhost:8080/v2/person
+
+@GetMapping("/v2/person")
+
+Request Param Versioning
+
+V1: http://localhost:8080/person?version=1
+
+@GetMapping(path = "/person", params = "version=1")
+
+V2: http://localhost:8080/person?version=2
+
+@GetMapping(path = "/person", params = "version=2")
+
+Header Versioning
+
+V1: http://localhost:8080/person/header
+
+HEADER - X-API-VERSION:1
+
+@GetMapping(path = "/person/header", headers = "X-API-VERSION=1")
+
+V2: http://localhost:8080/person/header
+
+HEADER - X-API-VERSION:2
+
+@GetMapping(path = "/person/header", headers = "X-API-VERSION=2")
+
+Content Negotiation Versioning
+
+V1: http://localhost:8080/person/accept
+
+HEADER - Accept:application/vnd.company.app-v1+json
+
+@GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")
+
+V2: http://localhost:8080/person/accept
+
+HEADER - Accept:application/vnd.company.app-v1+json
+
+@GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v2+json")
+
+V1 Response
+
+{
+  "name": "Bob Charlie"
+}
+V2 Response
+
+{
+  "name": {
+    "firstName": "Bob",
+    "lastName": "Charlie"
+  }
+}
+
+Versioning REST API
+===================
+1. You have built an amazing REST API
+	a. You have 100s of consumers.
+	b. You need to implement a breaking change.
+		1. Example: Split name into firstName and lastName
+2. Solution: Versoning REST API
+	a. Variety of options
+		1. URL
+		2. Request Parameter
+		3. Header
+		4. Media Type
+		
+Versioning using URL
+====================
+1. PersonV1, and PersonV2 classes created to support the versioning through URL.
+
+Request Parameter Versioning
+============================
+1. We are reusing the same classes with separate methods. Here, it takes the params.
+
+(Custom) Header Versioning
+==========================
+1. SAME-URL headers=[X-API-VERSION=1]
+2. SAME-URL headers=[X-API-VERSION=2]
+
+1. We are reusing the same classes with separate methods. Here, it takes the headers.
+
+Media Type Versioning [AKA - Content Negotiation or Accept Header]
+=====================
+1. SAME-URL produces=application/com.app-v1+json
+2. SAME-URL produces=application/com.app-v2+json
+
+Header Key - Accept
+Header Value - application/com.app-v1(v2)+json
+
+1. We are reusing the same classes with separate methods. Here, it takes the accept headers.
+
+Versioning REST API - Factors
+=============================
+1. Factors to consider
+	a. URI pollution
+	b. Misuse of HTTP Headers
+	c. Caching
+	d. Can we execute the request on the browser?
+	e. API Documentation
+
+Recommendations
+===============
+1. Think about versioning even before you need it!
+2. One Enterprise - One Versioning Approach
+
+HATEOAS
+=======
+1. Hypermedia as the Engine of Application State [HATEOAS]
+2. Websites allow you to:
+	a. See DATA and perform ACTIONS (using links)
+3. How about enhancing your REST API to tell consumers how to perform
+   subsequent actions?
+	a. HATEOAS
+4. Implementation Options:
+	a. Custom Format and Implementation
+		1. Difficult to maintain
+	b. Use Standard Implementation
+		1. HAL (JSON Hypertext Application Language): Simple format that
+		gives a consistent and easy way to hyperlink between resources in
+		your API.
+		2. Spring HATEOAS: Generate HAL responses with hyperlinks to
+		resources.
+
+Implementation Steps
+=====================
+1. Add HATEOS dependency in your POM.xml
 
 
 
 
-
-	
 		
 
 

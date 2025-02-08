@@ -2,7 +2,6 @@ package com.learn_everyday.rest.webservices.restful_web_services.exception;
 
 import java.time.LocalDateTime;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
