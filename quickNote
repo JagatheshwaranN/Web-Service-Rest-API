@@ -884,7 +884,23 @@ HATEOAS
 
 Implementation Steps
 =====================
-1. Add HATEOS dependency in your POM.xml
+1. Add HATEOAS dependency in your POM.xml
+2. Converted the existing retrieveUser method inside the EntityModel. 
+	a. EntityModel - In order to provide links with the actual response [HATEOAS]
+3. Then used WebMvcLinkBuilder to create the link for retrieveAllUsers.
+
+Updated Sample Response
+=======================
+{
+"id": 2,
+"name": "Alex",
+"dob": "1998-02-08",
+"_links": {
+"all-users": {
+"href": "http://localhost:8080/users"
+}
+}
+}
 
 
 
