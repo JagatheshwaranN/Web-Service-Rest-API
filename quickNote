@@ -902,41 +902,51 @@ Updated Sample Response
 }
 }
 
-
-
-
+Customization of REST API Resources - Filtering and more.
+=========================================================
+1. Serialization: Convert Object into Stream (Example: JSON).
+	a. Most popular JSON serialization in Java: Jackson
+2. How about customizing the REST API response returned by Jackson FW?
+	a. Customized Field Names in Response.
+		1. @JSONProperty
+	b. Return only selected Fields.
+		1. Filtering [Example: Filtering out passwords]
+		2. Two Types - Static and Dynamic
+		3. Static Filtering: Same filtering for a bean across different REST API
+			a. @JsonIgnoreProperties, @JsonIgnore
+		4. Dynamic Filtering: Customized filtering for a bean for a specific REST API
+			a. @JsonFilter with FilterProvider
 		
+Note: For Dynamic filtering, we have to use MappingJacksonValue, SimpleBeanPropertyFilter, and FilterProvider.
 
+Spring Boot Actuator
+====================
+1. Provides Spring Boot's production-ready features.
+	a. Monitor and manage your application in you production.
+2. Spring Boot Starter Actuator - Add this dependency in POM.xml.
+3. Provides a number of endpoints.
+	a. beans - Complete list of Spring Beans in you app.
+	b. health - Application health information.
+	c. metrics - Application metrics.
+	d. mappings - Details around Request Mappings.
 
+By default, Actuator expose only Health API. To get more APIs.
+1. Goto src/main/resources/application.properties
+2. Add the property - management.endpoints.web.exposure.include=*
 
+Explore REST API using HAL Explorer
+===================================
+1. HAL (JSON Hypertext Application Language)
+	a. Simple format that gives a consistent and easy way to hyperlink 
+	between resources in your API.
+2. HAL Explorer
+	a. An API explorer for RESTFul Hypermedia APIs using HAL.
+	b. Enable your non-technical teams to play with APIs.
+3. Spring Boot HAL Explorer
+	a. Auto-configures HAL Explorer for Spring Boot Projects.
+	b. spring-data-rest-hal-explorer
 
+Note: After adding the dependency. Restart Server and navigate to localhost:8080/explorer
+It will show the HAL explorer.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
