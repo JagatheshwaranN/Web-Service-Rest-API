@@ -949,4 +949,31 @@ Explore REST API using HAL Explorer
 Note: After adding the dependency. Restart Server and navigate to localhost:8080/explorer
 It will show the HAL explorer.
 
-	
+JPA & Hibernate
+===============
+1. Create a maven project using spring initializer.
+2. Add the dependencies - Spring Web, Spring JDBC, Spring JPA, and H2.
+3. Import the project and run it.
+4. Add the property - spring.h2.console.enabled=true in application.properties file.
+5. Then restart the server and goto localhost:8080/h2-console. It should open H2 console.
+	a. http://localhost:8080/h2-console/login.jsp?jsessionid=c73fe4148f7e2279d35ff02abb89d308
+6. We need to update the JDBC URL field. We can goto the server logs and check for below data.
+	a. url=jdbc:h2:mem:7a2295f9-f5b6-486a-85cd-11297845ca83
+7. Update the above value and click on connect to connect to the DB.
+	a. Note: The above URL is dynamic and keep changing everytime. We can use the static URL instead.
+8. To add static url, goto application.properties and add the following value.
+	a. spring.datasource.url=jdbc:h2:mem:testdb
+9. Restart the server and goto H2 Console, update the static URL.
+10. Next create a file called schema.sql and create a table course as below.
+	create table course 
+	(
+		id bigint not null,
+		name varchar(255) not null,
+		author varchar(255) not null,
+		primary key (id)
+	);
+11. Whenever we use Spring Data JPA starter, it will automatically pickup the schema.sql file and create
+	the table in H2. So, restart the server.
+12. Next step, we created the JDBCRepository where it has the sql methods to do DB ops.
+13. After that, CommandLineRunner class is created as we need to run the query when the application starts.
+
