@@ -976,4 +976,48 @@ JPA & Hibernate
 	the table in H2. So, restart the server.
 12. Next step, we created the JDBCRepository where it has the sql methods to do DB ops.
 13. After that, CommandLineRunner class is created as we need to run the query when the application starts.
+14. Now, we can add the deleteById, findById scenarios.
+15. For findById (Query / Retrieve Course details) - Below things to be taken care.
+	a. IMPORTANT - For this functionality to work properly, we should have the variable names of Bean class
+	and Database as same.
+	b. Here, we need to map the resultset to corresponding bean class. For that, we use BeanPropertyRowMapper class.
+
+JPA
+===
+1. Incase of JPA, we are going to map the Course Bean directly to the DB object.
+2. To achieve this, we need to add the @Entity annotation in Course class from Jakarta.
+3. To map the values, we can use the @Column annotation for other values and @Id for id value.
+4. We have to create JPARepository class and have to autowire[PersistenceContext - does the similar job as AutoWired] 
+   EntityManager who runs the show.
+5. Whenever we need to execute the query with JPA, we need to use @Transactional annotation in classlevel.
+6. spring.jpa.show-sql=true. This property can be added in application.properties file to show the JPA queries on console.
+
+Comparison of JDBC / Spring JDBC / JPA / Spring Data JPA
+========================================================
+JDBC
+====
+1. Write a lot of SQL queries.
+2. And write a lot of Java code.
+
+Spring JDBC
+===========
+1. Write a lot of SQL queries.
+2. But lesser Java code.
+
+JPA
+===
+1. Do not worry about queries
+2. Just Map Entities to Tables.
+
+Spring Data JPA
+===============
+1. Let's make JPA even more simple.
+2. I will take care of everything.
+
+Spring Data JPA
+===============
+1. Create an interface named CourseSpringDataJpaRepositroy and extends it with JpaRepository<Course, Long>.
+2. Now, move to CommandLineRunner class and update the methods and Repository reference.
+
+
 
