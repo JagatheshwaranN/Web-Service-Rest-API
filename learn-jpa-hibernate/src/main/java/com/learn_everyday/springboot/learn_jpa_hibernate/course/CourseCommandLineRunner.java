@@ -35,6 +35,12 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 		courseRepository.deleteById(3l);
 		System.out.println(courseRepository.findById(1l));
 		System.out.println(courseRepository.findById(2l));
+		
+		System.out.println(courseRepository.findAll());
+		System.out.println(courseRepository.count());
+		
+		System.out.println(courseRepository.findByAuthor("Jane Smith"));
+		System.out.println(courseRepository.findByName("Java Programming"));
 	}
 
 }

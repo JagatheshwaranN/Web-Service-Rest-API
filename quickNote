@@ -1006,7 +1006,7 @@ Spring JDBC
 
 JPA
 ===
-1. Do not worry about queries
+1. Do not worry about queries.
 2. Just Map Entities to Tables.
 
 Spring Data JPA
@@ -1018,6 +1018,16 @@ Spring Data JPA
 ===============
 1. Create an interface named CourseSpringDataJpaRepositroy and extends it with JpaRepository<Course, Long>.
 2. Now, move to CommandLineRunner class and update the methods and Repository reference.
+
+Hibernate vs JPA
+================
+1. JPA defines the specification. It is an API.
+	a. How do you define entities?
+	b. How do you map attributes?
+	c. Who manages the entities?
+2. Hibernate is ond of the popular implementation of JPA.
+3. Using Hibernate direclty would result in a lock into Hibernate.
+	a. There are other JPA implementation(Toplink, for example)
 
 
 
