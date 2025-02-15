@@ -1029,5 +1029,15 @@ Hibernate vs JPA
 3. Using Hibernate direclty would result in a lock into Hibernate.
 	a. There are other JPA implementation(Toplink, for example)
 
+User WebService Upgrade with JPA
+================================
+1. JPA is added to the User Webservice and separate endpoints created for the same.
+2. UserJpaRepository created. UserJpaResource created.
+3. Created Post Entity and established the connection between User and Post using 
+   @ManyToOne and @OneToMany annotations.
+4. Added the SQL queries for Post.
+5. Created PostJpaRepository, Created the GetMapping and PostMapping methods to get the 
+	posts for user. Also, to create the post for specific user.
+
 
 
