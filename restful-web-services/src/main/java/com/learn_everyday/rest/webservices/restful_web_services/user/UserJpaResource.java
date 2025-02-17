@@ -6,6 +6,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -76,7 +77,6 @@ public class UserJpaResource {
 		}
 		return user.get().getPosts();
 	}
-
 	
 	@PostMapping("/jpa/users/{id}/posts")
 	public ResponseEntity<Object> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
@@ -89,6 +89,16 @@ public class UserJpaResource {
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPost.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();
+	}
+	
+	@GetMapping("/jpa/users/{id}/posts/{postId}")
+	public Post retrievePostForUser(@PathVariable int id, @PathVariable int postId) {
+		Optional<User> user = this.userRepository.findById(id);
+		if(user.isEmpty()) {
+			throw new UserNotFoundException("id: "+id);
+		}
+		Predicate<? super Post> predicate = post -> post.getId().equals(postId);
+		return user.get().getPosts().stream().filter(predicate).findFirst().orElse(null);
 	}
 	
 }

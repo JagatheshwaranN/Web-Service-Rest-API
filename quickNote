@@ -1039,5 +1039,67 @@ User WebService Upgrade with JPA
 5. Created PostJpaRepository, Created the GetMapping and PostMapping methods to get the 
 	posts for user. Also, to create the post for specific user.
 
+Connecting the WebService to MySQL DB using Docker
+==================================================
+Code Changes for Next Step - https://github.com/in28minutes/spring-web-services/blob/master/restful-web-services-v2/01-step-by-step-changes/v2.md#step-35
 
+Launch MySQL as Docker Container
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=social-media-user 
+--env MYSQL_PASSWORD=dummypassword --env MYSQL_DATABASE=social-media-database --name mysql 
+--publish 3306:3306 mysql:8-oracle
 
+mysqlsh commands
+================
+mysqlsh
+\connect social-media-user@localhost:3306
+\sql
+use social-media-database
+select * from user_details;
+select * from post;
+\quit
+
+pom.xml Modified
+================
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+</dependency> 
+
+application.properties Updated
+==============================
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:mysql://localhost:3306/social-media-database
+spring.datasource.username=social-media-user
+spring.datasource.password=dummypassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+
+The above MySQL configs are not done due to the System requirements.
+
+WebService Security
+===================
+Spring Security
+===============
+1. We have to add the Spring secuity dependenct to the pom.xml
+2. Restart the application. You will see the password in the logs.
+3. Grab it and have it. Now, hit the endpoint and it will redirect you to login page.
+4. Enter the username as 'user' and the password you grabbed.
+5. Note: On each restart, different passwords will be generated.
+6. To have static username and password, update the application.properties file as below.
+	a. spring.security.user.name=username
+	b. spring.security.user.password=password
+
+After adding the securtiy, we might have issues with POST endpoints. So, we need to enhance
+the Spring Security Configurations.
+
+What Spring Security does?
+1. It will do lot of filters in backend. Those were called as Filter Chains.
+2. All requests should be authenticated.
+3. If a request is not authenticated, a web page is shown.
+4. CSRF -> POST and PUT
+
+Solution:
+=========
+1. Create a configuration file.
+2. Define a bean.
+3. Override the default filter.
