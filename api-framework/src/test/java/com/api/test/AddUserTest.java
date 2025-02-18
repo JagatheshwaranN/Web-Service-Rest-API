@@ -6,7 +6,7 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.api.base.StudenService;
+import com.api.base.StudentService;
 import com.api.models.request.Student;
 
 import io.restassured.response.Response;
@@ -18,7 +18,7 @@ public class AddUserTest {
 	public void addUserTest() {
 		List<String> courses = Arrays.asList("Science", "Commerce", "Accounts");
 		Student student = new Student("Rosy Johnson", "Texas", "312-345-5677", courses);
-		StudenService service = new StudenService();
+		StudentService service = new StudentService();
 		Response response = service.addStudent(student);
 		com.api.models.response.Student reStudent = response.as(com.api.models.response.Student.class);
 		System.out.println(reStudent.getId());
