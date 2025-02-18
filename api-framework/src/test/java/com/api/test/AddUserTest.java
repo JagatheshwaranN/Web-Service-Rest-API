@@ -6,8 +6,8 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.api.base.StudentService;
 import com.api.models.request.Student;
+import com.api.resources.StudentService;
 
 import io.restassured.response.Response;
 
