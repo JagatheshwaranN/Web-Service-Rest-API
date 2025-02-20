@@ -1,0 +1,12 @@
+Spring
+======
+Spring is a dependency injection framework.
+
+Terminologies
+=============
+1. Bean
+2. Autowired
+3. Dependency Injection
+4. Inversion Of Control
+5. IOC container
+6. Application Context [Example of IOC container]
