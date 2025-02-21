@@ -1,13 +1,38 @@
 package com.learn_everyday.sping_basics;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+// @Scope("prototype") Not Recommended Type of Writing // It is used to generate the different instance of this class when requested from AC.
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class BinarySearchImpl {
-
+	
+	// Here, we will have issue as we have 2 sorting algorithms defined.
+	// To fix the same, we have used @Primary annotation, so @Primary injected
+	// algorithm will be considered.
+//	@Autowired
+//	SortingAlgo sortingAlgo;
+	
+	// Alternate Way 1
+	// The other way to fix the same is by using the explicit instance variable name
+	// of the algorithm. 
+	// Note: We need to provide the exact name otherwise it will not work.
+	// NOTE: Here, we can remove the @Primary annotation.
+//	@Autowired
+//	SortingAlgo bubbleSortAlgoImpl;
+	
+	// Alternate Way 2
+	// The second approach is to use the @Qualifier annotation.
+	// We have to add the annotation in the Bean class and also have to mention the same
+	// before Autowired reference.
 	@Autowired
+	@Qualifier("quick")
 	SortingAlgo sortingAlgo;
+
 
 	public int binarySearch(int[] array, int searchFor) {
 

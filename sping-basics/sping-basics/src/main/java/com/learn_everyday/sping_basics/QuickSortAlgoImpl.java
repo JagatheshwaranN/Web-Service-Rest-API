@@ -1,8 +1,10 @@
 package com.learn_everyday.sping_basics;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("quick")
 public class QuickSortAlgoImpl implements SortingAlgo {
 	
 	public int[] sortArray(int[] arr) {

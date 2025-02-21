@@ -10,3 +10,81 @@ Terminologies
 4. Inversion Of Control
 5. IOC container
 6. Application Context [Example of IOC container]
+
+https://github.com/in28minutes/spring-master-class/tree/master/01-spring-in-depth
+
+Spring Framework Terms
+======================
+Modules
+=======
+Data Access / Integration
+=========================
+JDBC - Java Data Base Connection
+ORM - Object Relation Mapping
+OXM - Object XML Mapping
+JMS - Java Messaging System
+
+Web
+===
+WebSocket
+Servlet
+Web
+Portlet
+
+Cross Cutting Concerns
+======================
+We need to do the unit testing in Web / Service / Data layers.
+
+AOP - Aspect Oriented Programming
+Aspects
+
+Spring Projects
+===============
+1. Spring Boot
+2. Spring Cloud
+3. Spring Data
+4. Spring Integration
+5. Sping Batch
+6. Spring Security
+7. Spring HATEOAS
+8. Others.. [Spring Session, Spring Web Services]
+
+Why Spring Popular
+==================
+1. Enables Testable Code
+2. No Plumbing Code
+3. Flexible Architecure
+4. Staying Current
+
+To Fix More Than One Bean Issue for runtime [Multiple Candidates avail for Autowiring]
+===========================================
+Here, we will have issue as we have 2 sorting algorithms defined. To fix the same, we have 
+used @Primary annotation, so @Primary injected algorithm will be considered.
+@Autowired
+SortingAlgo sortingAlgo;
+
+Alternate Way 1
+The other way to fix the same is by using the explicit instance variable name of the algorithm. 
+Note: We need to provide the exact name otherwise it will not work.
+@Autowired
+SortingAlgo bubbleSortAlgoImpl;
+
+NOTE: Here, we can remove the @Primary annotation.
+
+Alternate Way 2
+The second approach is to use the @Qualifier annotation.
+We have to add the annotation in the Bean class and also have to mention the same
+before Autowired reference.
+@Autowired
+@Qualifier("quick")
+SortingAlgo sortingAlgo;
+
+Bean Scope
+==========
+Default - singleton
+* When we request ApplicationContext for a Bean for 10 times. We will 
+  get the same bean, which is Singleton.
+singleton - One instance per Spring Context.
+prototype - New bean whenever requested.
+request - One bean per HTTP request.
+session - One bean per HTTP session.
