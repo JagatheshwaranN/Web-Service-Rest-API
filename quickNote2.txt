@@ -88,3 +88,95 @@ singleton - One instance per Spring Context.
 prototype - New bean whenever requested.
 request - One bean per HTTP request.
 session - One bean per HTTP session.
+
+Prototype can be implemented using below code.
+// @Scope("prototype") Not Recommended Type of Writing // It is used to generate the different instance of this class when requested from AC.
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class BinarySearchImpl {
+}
+
+Combo of Singleton and Prototype Scope
+======================================
+Let's have a scenario where we have Bean which has scope as Singleton. And the dependency of it
+has the scope as Prototype.
+When we excute the below code,
+ApplicationContext context = SpringApplication.run(SpingScopeApplication.class, args);
+UserDAO userDAO1 = context.getBean(UserDAO.class);
+UserDAO userDAO2 = context.getBean(UserDAO.class);
+System.out.println(userDAO1); // UserDAO@68105edc
+System.out.println(userDAO1.getJdbcConnection()); // JDBCConnection@66eb985d
+System.out.println(userDAO2); // UserDAO@68105edc
+System.out.println(userDAO2.getJdbcConnection()); // JDBCConnection@66eb985d
+
+Here, though the Dependency has Prototype scope, it has same object. The reason is its parent bean,
+which has Singleton pattern.
+
+To have it work, we have to update the dependency class file as below.
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class JDBCConnection {}
+
+We have to use proxyMode = ScopedProxyMode.TARGET_CLASS attribute to have the different objects on each
+invocation of class JDBCConnection.
+
+ComponentScan
+=============
+By default, the Spring take the package during project creation as the scan area. If you create any package
+outside the default area, it will not scan and throws NoBeanFoundException.
+
+To fix this, we have to explicitly mention the ComponentScan for the package created.
+@ComponentScan("componentscan")
+public class SpingComponentScanApplication {}
+
+Bean LifeCycle
+==============
+We can execute set of code after creating a bean and before destroying a bean.
+postConstruct and preDestroy methods are available to do so.
+NOTE: This will work for bean with Singleton scope.
+
+Inside Bean class, you can add below code.
+
+@PostConstruct
+public void postConstruct() {
+	logger.info("Method - Post Construct");
+}
+
+@PreDestroy
+public void preDestroy() {
+	logger.info("Method - Pre Destroy");
+}
+
+Context & Dependency Injection [Interface which has set of RULES and Spring has implemented it.]
+==============================
+1. Java EE Dependency Injection Standard (JSR-330)
+2. Spring supports most annotations.
+	a. @Inject(@Autowired)
+	b. @Named(@Component & @Qualifier)
+	c. @Singleton (Defines a scope of Singleton)
+
+SpringBoot -> Spring
+====================
+We can switch from Spirngboot configurations to Spring.
+1. Update POM.xml file with respective dependencies.
+2. Goto ApplicationContext file and update configurations.
+	1. @Configuration, @ComponentScan
+	2. AnnotationConfigApplicationContext object created by using the ApplicationContext Class.
+
+// @SpringBootApplication
+@Configuration
+@ComponentScan("componentscan")
+public class SpingComponentScanApplication {
+
+	private static Logger LOGGER = LoggerFactory.getLogger(SpingComponentScanApplication.class);
+
+	@SuppressWarnings("resource")
+	public static void main(String[] args) {
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(SpingComponentScanApplication.class);
+		ComponentUserDAO userDAO1 = context.getBean(ComponentUserDAO.class);
+		ComponentUserDAO userDAO2 = context.getBean(ComponentUserDAO.class);
+		LOGGER.info("{}", userDAO1);
+		LOGGER.info("{}", userDAO1.getJdbcConnection());
+		LOGGER.info("{}", userDAO2);
+		LOGGER.info("{}", userDAO2.getJdbcConnection());
+	}
+}

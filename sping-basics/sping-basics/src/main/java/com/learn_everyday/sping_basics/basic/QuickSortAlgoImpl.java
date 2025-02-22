@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics;
+package com.learn_everyday.sping_basics.basic;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;

@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.learn_everyday.sping_basics.basic.BinarySearchImpl;
+
 @SpringBootApplication
 public class SpingBasicsApplication {
 
