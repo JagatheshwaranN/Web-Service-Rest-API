@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics;
+package com.learn_everyday.spring_basics;
 
 
 
@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.learn_everyday.sping_basics.scope.UserDAO;
+import com.learn_everyday.spring_basics.scope.UserDAO;
 
 @SpringBootApplication
 public class SpingScopeApplication {

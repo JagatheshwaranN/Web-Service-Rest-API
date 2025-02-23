@@ -159,7 +159,7 @@ We can switch from Spirngboot configurations to Spring.
 1. Update POM.xml file with respective dependencies.
 2. Goto ApplicationContext file and update configurations.
 	1. @Configuration, @ComponentScan
-	2. AnnotationConfigApplicationContext object created by using the ApplicationContext Class.
+	2. AnnotationConfigApplicationContext object created by using the ApplicationContext.
 
 // @SpringBootApplication
 @Configuration
@@ -180,3 +180,53 @@ public class SpingComponentScanApplication {
 		LOGGER.info("{}", userDAO2.getJdbcConnection());
 	}
 }
+
+To fix the warning of context not closed. The ApplicationContext is updated as AnnotationConfigApplicationContext and 
+added inside the Try-with-Resources.
+
+Next step is to create applicationContext.xml under main/resources
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://www.springframework.org/schema/beans"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="xmlJdbcConnection"
+		class="com.learn_everyday.spring_basics.xml.XmlJdbcConnection">
+	</bean>
+	<bean id="xmlUserDAO"
+		class="com.learn_everyday.spring_basics.xml.XmlUserDAO">
+		<property name="xmlJdbcConnection" ref="xmlJdbcConnection" />
+	</bean>
+</beans>
+
+NOTE: 
+1. Xml has showing error, but the project works fine. I believe its known issue.
+2. We don't need any annotations as its linked via xml file.
+
+Next step is to create the ApplicationContext run file as below and execute the code.
+
+package com.learn_everyday.spring_basics;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.learn_everyday.spring_basics.xml.XmlUserDAO;
+
+@Configuration
+public class SpingXmlConfigApplication {
+
+	private static Logger LOGGER = LoggerFactory.getLogger(SpingXmlConfigApplication.class);
+
+	public static void main(String[] args) {
+
+		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml")) {
+			XmlUserDAO userDAO1 = context.getBean(XmlUserDAO.class);
+			LOGGER.info("{}", userDAO1);
+			LOGGER.info("{}", userDAO1.getXmlJdbcConnection());
+		}
+	}
+}
+

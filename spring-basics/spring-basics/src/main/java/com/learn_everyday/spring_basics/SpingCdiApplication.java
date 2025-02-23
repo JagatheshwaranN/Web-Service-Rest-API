@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics;
+package com.learn_everyday.spring_basics;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.learn_everyday.sping_basics.cdi.CdiBusiness;
+import com.learn_everyday.spring_basics.cdi.CdiBusiness;
 
 @SpringBootApplication
 public class SpingCdiApplication {

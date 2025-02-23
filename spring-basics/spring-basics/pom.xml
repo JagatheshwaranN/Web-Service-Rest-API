@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learn-everyday</groupId>
-	<artifactId>sping-basics</artifactId>
+	<artifactId>spring-basics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sping-basics</name>
+	<name>spring-basics</name>
 	<description>Demo project for Spring Boot</description>
 	<url />
 	<licenses>
@@ -28,6 +28,7 @@
 		<url />
 	</scm>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
@@ -47,6 +48,13 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<!--    <version>1.5.16</version>
+    				<scope>compile</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics.scope;
+package com.learn_everyday.spring_basics.scope;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

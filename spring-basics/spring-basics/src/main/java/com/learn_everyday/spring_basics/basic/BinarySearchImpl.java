@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics.basic;
+package com.learn_everyday.spring_basics.basic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

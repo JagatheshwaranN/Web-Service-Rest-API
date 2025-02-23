@@ -1,4 +1,4 @@
-package com.learn_everyday.sping_basics.cdi;
+package com.learn_everyday.spring_basics.cdi;
 
 import javax.inject.Named;
 
