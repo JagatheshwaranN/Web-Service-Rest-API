@@ -215,7 +215,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.learn_everyday.spring_basics.xml.XmlUserDAO;
 
-@Configuration
 public class SpingXmlConfigApplication {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(SpingXmlConfigApplication.class);
@@ -229,4 +228,56 @@ public class SpingXmlConfigApplication {
 		}
 	}
 }
+
+To get the list of beans loaded
+===============================
+LOGGER.info("Beans Loaded -> {}", (Object)context.getBeanDefinitionNames());
+
+To load all the beans available in different packages. We can use ComponentScan.
+And its not matter whether we are using annotation or xml configurations.
+
+To use ComponentScan from XML, we need to update the applicationContext.xml file 
+for context.
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+  
+    <context:component-scan base-package="com.learn_everyday.spring_basics" />
+
+IOC Container vs ApplicationContext vs BeanFactory
+==================================================
+When the controller of creating the instance of dependent bean is moved from Controller.
+It is called as IOC. IOC can be implemented using the @Component and @Autowired annotations.
+
+In Spring, there are 2 instance of IOC Container.
+1. ApplicationContext
+2. BeanFactory
+
+BeanFactory provides basic management for beans and wiring of the dependencies.
+
+ApplicationContext
+==================
+1. BeanFactory++..
+2. Spring's AOP features.
+3. i18n capabilities
+4. WebApplicationContext for web applications, etc.
+
+Spring suggests to use the ApplicationContext in 99% scenarios and when we
+have less memory system or requirement then we can use BeanFactory.
+
+Component Annotations
+=====================
+@Component - Generic Component
+@Repository - Encapsulating storage, retrieval, and search behavior typically from
+a relational DB.
+@Service - Business Service Facade.
+@Controller - Controller in MVC pattern.
+
+Why we need to use @Repository/@Service/@Controller when we have @Component.
+The reason is the above specific annotations provides some functionalities with respect
+to their layer of usage. If we don't mention them specifically using those annotation
+then we can't avail those benefits.
 
