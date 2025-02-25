@@ -281,3 +281,33 @@ The reason is the above specific annotations provides some functionalities with 
 to their layer of usage. If we don't mention them specifically using those annotation
 then we can't avail those benefits.
 
+Read data from External Property File
+=====================================
+We need 2 things. One is @Value annotation and another is @PropertySource annotation.
+We have to apply the @Value on the equivalent variable declared on bean for the value we
+have in external property file.
+We need @PropertySource to load the property file and it can be done before ApplicationContext
+initialization.
+
+@SpringBootApplication
+@PropertySource("classpath:app.properties")
+public class SpingBasicsApplication {
+
+	public static void main(String[] args) {
+
+		ApplicationContext context = SpringApplication.run(SpingBasicsApplication.class, args);
+		ExternalFile externalFile = context.getBean(ExternalFile.class);
+		System.out.println(externalFile.retrieveUrl());
+	}
+
+}
+
+
+	@Value("${external.service.url}")
+	private String url;
+
+	public String retrieveUrl() {
+		return url;
+	}
+
+
