@@ -302,7 +302,6 @@ public class SpingBasicsApplication {
 
 }
 
-
 	@Value("${external.service.url}")
 	private String url;
 
@@ -310,4 +309,12 @@ public class SpingBasicsApplication {
 		return url;
 	}
 
-
+Mockito
+========
+1. Great unit tests -> Easier Maintenance.
+2. Writing great unit tests is NOT easy.
+	a. Application have multiple layers.
+		1. Each class has multiple dependencies.
+3. How do you write the unit tests for classes with multiple dependencies?
+	a. Option1: Stubs
+	b. Option2: Mocks
