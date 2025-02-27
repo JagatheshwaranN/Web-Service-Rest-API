@@ -318,3 +318,6 @@ Mockito
 3. How do you write the unit tests for classes with multiple dependencies?
 	a. Option1: Stubs
 	b. Option2: Mocks
+		1. Advantages of Mocks
+			a. Simpler to Write
+			b. Easier to Maintain

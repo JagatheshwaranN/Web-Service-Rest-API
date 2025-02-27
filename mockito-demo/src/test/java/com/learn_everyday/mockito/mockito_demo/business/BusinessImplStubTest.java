@@ -3,7 +3,7 @@ package com.learn_everyday.mockito.mockito_demo.business;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class BusinessImplTest {
+class BusinessImplStubTest {
 
 	@Test
 	void findtheGreatestValueTest() {
