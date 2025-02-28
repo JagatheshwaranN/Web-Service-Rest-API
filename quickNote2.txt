@@ -321,3 +321,62 @@ Mockito
 		1. Advantages of Mocks
 			a. Simpler to Write
 			b. Easier to Maintain
+			
+Sample Mockito Test
+===================
+	@Test
+	void findtheGreatestValueTest() {
+		DataService dataServiceMock = mock(DataService.class);
+		when(dataServiceMock.retrieveAllData()).thenReturn(new int[] {4, 7, 9, 2, 3});
+		BusinessImpl businessImpl = new BusinessImpl(dataServiceMock);
+		int result = businessImpl.findtheGreatestValue();
+		System.out.println(result);
+		assertEquals(9, result);
+	}
+
+Simplified Version
+==================
+@ExtendWith(MockitoExtension.class)
+class BusinessImplSimplifiedMockTest {
+	
+	@Mock
+	private DataService dataService;
+	
+	@InjectMocks
+	private BusinessImpl businessImpl;
+
+	@Test
+	void findtheGreatestValueTest() {
+		when(dataService.retrieveAllData()).thenReturn(new int[] {4, 7, 9, 2, 3});
+		int result = businessImpl.findtheGreatestValue();
+		System.out.println(result);
+		assertEquals(9, result);
+	}
+}
+
+Unit Test Writing
+=================
+Using Junit
+===========
+1. To write the unit test, we need the @ContextConfiguration and @RunWith annotations, to load
+the Context(For which unit test is written)
+2. Then we need to get the bean, for that we need to use @Autowired dependency.
+
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SpingExternalPropertyApplication.class)
+public class BinarySearchTest {
+
+	// Get the BEAN from the context
+	@Autowired
+	BinarySearchImpl binarySearchImpl;
+
+	@Test
+	public void testBasicScenario() {
+		// Call a method on Binary Search
+		int result = binarySearchImpl.binarySearch(new int[] {}, 5);
+		// Check the value is correct
+		assertEquals(3, result);
+	}
+
+}
+
