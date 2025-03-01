@@ -377,6 +377,49 @@ public class BinarySearchTest {
 		// Check the value is correct
 		assertEquals(3, result);
 	}
-
 }
+
+We can also load the XML context using the applicationContext.xml file.
+Also, we can override the applicationContext.xml data with testContext.xml file
+by declaring it inside src/test/resources folder.
+
+@RunWith(SpringRunner.class)
+@ContextConfiguration(locations = "/applicationContext.xml")
+public class BinarySearchXmlConfigurationTest {
+
+	// Get the BEAN from the context
+	@Autowired
+	BinarySearchImpl binarySearchImpl;
+
+	@Test
+	public void testBasicXmlScenario() {
+		// Call a method on Binary Search
+		int result = binarySearchImpl.binarySearch(new int[] {}, 5);
+		// Check the value is correct
+		assertEquals(3, result);
+	}
+}
+
+@RunWith(SpringRunner.class)
+@ContextConfiguration(locations = "/testContext.xml")
+public class BinarySearchTestContextXmlTest {
+
+	// Get the BEAN from the context
+	@Autowired
+	BinarySearchImpl binarySearchImpl;
+
+	@Test
+	public void testBasicXmlScenario() {
+		// Call a method on Binary Search
+		int result = binarySearchImpl.binarySearch(new int[] {}, 5);
+		// Check the value is correct
+		assertEquals(3, result);
+	}
+}
+
+Spring AOP [Aspect Oriented Programming]
+==========
+
+
+
 

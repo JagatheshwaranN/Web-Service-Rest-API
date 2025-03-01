@@ -11,14 +11,14 @@ import componentscan.ComponentUserDAO;
 // @SpringBootApplication
 @Configuration
 @ComponentScan("componentscan")
-public class SpingComponentScanApplication {
+public class SpringComponentScanApplication {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SpingComponentScanApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringComponentScanApplication.class);
 
 	public static void main(String[] args) {
 
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-				SpingComponentScanApplication.class)) {
+				SpringComponentScanApplication.class)) {
 
 			ComponentUserDAO userDAO1 = context.getBean(ComponentUserDAO.class);
 			ComponentUserDAO userDAO2 = context.getBean(ComponentUserDAO.class);

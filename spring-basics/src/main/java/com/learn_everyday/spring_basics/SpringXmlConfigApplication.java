@@ -6,9 +6,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.learn_everyday.spring_basics.xml.XmlUserDAO;
 
-public class SpingXmlConfigApplication {
+public class SpringXmlConfigApplication {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SpingXmlConfigApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringXmlConfigApplication.class);
 
 	public static void main(String[] args) {
 

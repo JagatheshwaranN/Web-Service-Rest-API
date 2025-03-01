@@ -9,11 +9,11 @@ import com.learn_everyday.spring_basics.properties.ExternalFile;
 
 @SpringBootApplication
 @PropertySource("classpath:app.properties")
-public class SpingBasicsApplication {
+public class SpringBasicsApplication {
 
 	public static void main(String[] args) {
 
-		ApplicationContext context = SpringApplication.run(SpingBasicsApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringBasicsApplication.class, args);
 		ExternalFile externalFile = context.getBean(ExternalFile.class);
 		System.out.println(externalFile.retrieveUrl());
 	}

@@ -9,13 +9,13 @@ import org.springframework.context.ApplicationContext;
 import com.learn_everyday.spring_basics.cdi.CdiBusiness;
 
 @SpringBootApplication
-public class SpingCdiApplication {
+public class SpringCdiApplication {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SpingCdiApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringCdiApplication.class);
 
 	public static void main(String[] args) {
 
-		ApplicationContext context = SpringApplication.run(SpingCdiApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringCdiApplication.class, args);
 
 		CdiBusiness cdiBusiness = context.getBean(CdiBusiness.class);
 		LOGGER.info("{}", cdiBusiness);

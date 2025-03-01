@@ -7,11 +7,11 @@ import org.springframework.context.ApplicationContext;
 import com.learn_everyday.spring_basics.basic.BinarySearchImpl;
 
 @SpringBootApplication
-public class SpingExternalPropertyApplication {
+public class SpringExternalPropertyApplication {
 
 	public static void main(String[] args) {
 		
-		ApplicationContext context = SpringApplication.run(SpingExternalPropertyApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringExternalPropertyApplication.class, args);
 		
 //		Default - singleton
 //		When we request ApplicationContext for a Bean for 10 times. We will 

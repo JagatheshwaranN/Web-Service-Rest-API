@@ -11,14 +11,14 @@ import org.springframework.context.ApplicationContext;
 import com.learn_everyday.spring_basics.scope.UserDAO;
 
 @SpringBootApplication
-public class SpingScopeApplication {
+public class SpringScopeApplication {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SpingScopeApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringScopeApplication.class);
 	public static void main(String[] args) {
 		
 		
 		
-		ApplicationContext context = SpringApplication.run(SpingScopeApplication.class, args);
+		ApplicationContext context = SpringApplication.run(SpringScopeApplication.class, args);
 		
 		UserDAO userDAO1 = context.getBean(UserDAO.class);
 		UserDAO userDAO2 = context.getBean(UserDAO.class);
