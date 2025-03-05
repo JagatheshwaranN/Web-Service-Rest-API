@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite>
+<suite name="API Test Suite">
+<listeners>
+		<listener class-name="com.api.listener.TestListener" />
+	</listeners>
+	<test thread-count="4" name="API Test" parallel="methods">
+		<classes>
+			<class name="com.api.test.GetUserTest">
+				<methods>
+					<include name="getUserTest1" />
+					<!-- <include name="getUserTest2" /> -->
+				</methods>
+			</class>
+			<!-- <class name="com.api.test.AddUserTest">
+				<methods>
+					<include name="addUserTest1" />
+					<include name="addUserTest2" />
+				</methods>
+			</class> -->
+		</classes>
+	</test>
+</suite>

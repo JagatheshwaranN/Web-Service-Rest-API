@@ -17,9 +17,9 @@ import io.restassured.response.Response;
 public class AddUserBuilderTest {
 
 	@Test(description = "Verify Add Student Endpoint is working..")
-	public void addUserTest() {
+	public void addUserBuilderTest() {
 		List<String> courses = Arrays.asList("Science", "Commerce", "Accounts");
-		StudentBuilder studentBuilder = new StudentBuilder.Builder().name("Nate Eaten").location("California")
+		StudentBuilder studentBuilder = new StudentBuilder.Builder().name("Esabella Colin").location("California")
 				.phone("313-456-6768").courses(courses).build();
 
 		StudentService service = new StudentService();

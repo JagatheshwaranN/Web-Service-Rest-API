@@ -17,5 +17,9 @@ public class StudentService extends BaseService {
 	public Response addStudentBuilder(StudentBuilder payload) {
 		return postRequest(payload, BASE_PATH);
 	}
-
+	
+	public Response getStudent(String id) {
+		return getRequest(id, BASE_PATH);
+	}
+	
 }

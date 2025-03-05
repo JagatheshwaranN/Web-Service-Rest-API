@@ -1,0 +1,577 @@
+16:17:10.699 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+16:17:10.755 [main] INFO  com.api.listener.TestListener - Test Started!! - addUserBuilderTest
+16:17:10.756 [main] INFO  com.api.listener.TestListener - Description!! - Verify Add Student Endpoint is working..
+16:17:14.060 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:17:14.060 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+16:17:14.060 [main] INFO  com.api.filter.LogFilter - Request Payload: {"name":"Esabella Colin","location":"California","phone":"313-456-6768","courses":["Science","Commerce","Accounts"]}
+16:17:14.686 [main] ERROR com.api.listener.TestListener - Test Failed!! - addUserBuilderTest
+16:17:14.800 [main] INFO  com.api.listener.TestListener - Test Suite Finished!!
+16:18:38.030 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+16:18:38.079 [main] INFO  com.api.listener.TestListener - Test Started!! - addUserBuilderTest
+16:18:38.079 [main] INFO  com.api.listener.TestListener - Description!! - Verify Add Student Endpoint is working..
+16:18:40.101 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:18:40.101 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+16:18:40.101 [main] INFO  com.api.filter.LogFilter - Request Payload: {"name":"Esabella Colin","location":"California","phone":"313-456-6768","courses":["Science","Commerce","Accounts"]}
+16:18:40.773 [main] INFO  com.api.filter.LogFilter - Status Code: 201
+16:18:40.773 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 10:48:40 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=167
+16:18:40.868 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "4b79",
+    "name": "Esabella Colin",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+16:18:40.881 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:18:40.882 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+16:18:40.882 [main] INFO  com.api.filter.LogFilter - Request Payload: {"name":"Esabella Colin","location":"California","phone":"313-456-6768","courses":["Science","Commerce","Accounts"]}
+16:18:40.903 [main] INFO  com.api.filter.LogFilter - Status Code: 201
+16:18:40.903 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 10:48:40 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=167
+16:18:40.905 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "3fdc",
+    "name": "Esabella Colin",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+16:18:40.990 [main] INFO  com.api.listener.TestListener - Test Passed!! - addUserBuilderTest
+16:18:41.031 [main] INFO  com.api.listener.TestListener - Test Suite Finished!!
+16:25:48.423 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:25:48.482 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:25:48.577 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:25:48.577 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:25:48.593 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:25:48.593 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:25:49.055 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:25:49.064 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:25:49.065 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:25:50.171 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:25:50.176 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:25:50.178 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:25:52.860 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:25:52.866 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:25:52.866 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:26:39.124 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:26:39.130 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:26:39.130 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:26:39.752 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+16:26:39.756 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 10:56:39 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+16:26:39.856 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+16:28:03.931 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:28:03.936 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:28:03.937 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:28:04.639 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+16:28:04.639 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 10:58:04 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+16:28:04.720 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+16:29:20.758 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:29:20.764 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:29:20.764 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:29:21.458 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+16:29:21.458 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 10:59:21 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+16:29:21.532 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+16:49:06.736 [main] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+16:49:06.741 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+16:49:06.742 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+16:49:07.415 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+16:49:07.416 [main] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 11:19:07 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+16:49:07.486 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+19:43:19.354 [main] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+19:43:19.367 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+19:43:19.368 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+19:43:20.783 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+19:43:20.785 [main] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=163
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:13:20 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+19:43:20.926 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+19:43:21.583 [main] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+19:43:21.584 [main] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+19:43:21.585 [main] INFO  com.api.filter.LogFilter - Request Payload: null
+19:43:21.724 [main] INFO  com.api.filter.LogFilter - Status Code: 200
+19:43:21.725 [main] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=159
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:13:21 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+19:43:21.730 [main] INFO  com.api.filter.LogFilter - Response: {
+    "id": "8d58",
+    "name": "Erica John",
+    "location": "New Jersey",
+    "phone": "313-456-7890",
+    "courses": [
+        "Arts",
+        "History",
+        "Accounts"
+    ]
+}
+19:44:44.713 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+19:44:44.719 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+19:44:44.713 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+19:44:44.719 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+19:44:44.719 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: null
+19:44:44.720 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+19:44:46.129 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+19:44:46.129 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Status Code: 200
+19:44:46.129 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=163
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:14:46 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+19:44:46.129 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=159
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:14:46 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+19:44:46.215 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+19:44:46.215 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response: {
+    "id": "8d58",
+    "name": "Erica John",
+    "location": "New Jersey",
+    "phone": "313-456-7890",
+    "courses": [
+        "Arts",
+        "History",
+        "Accounts"
+    ]
+}
+20:09:48.250 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:09:48.251 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:09:48.256 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+20:09:48.256 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+20:09:48.257 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: null
+20:09:48.257 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+20:09:49.550 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+20:09:49.550 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=163
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:39:49 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:09:49.552 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Status Code: 200
+20:09:49.552 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=159
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:39:49 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:09:49.667 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response: {
+    "id": "8d58",
+    "name": "Erica John",
+    "location": "New Jersey",
+    "phone": "313-456-7890",
+    "courses": [
+        "Arts",
+        "History",
+        "Accounts"
+    ]
+}
+20:09:49.669 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+20:12:33.549 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:12:33.549 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:12:33.554 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+20:12:33.555 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+Content-Type=application/json
+20:12:33.555 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: {"name":"Thread2 User","location":"Texas","phone":"312-345-5677","courses":["Science","Commerce","Arts"]}
+20:12:33.555 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: {"name":"Thread1 User","location":"Texas","phone":"312-345-5677","courses":["Science","Commerce","Accounts"]}
+20:12:34.923 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 201
+20:12:34.924 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Status Code: 201
+20:12:34.924 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=156
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:42:34 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:12:34.925 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=160
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:42:34 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:12:34.989 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "0cde",
+    "name": "Thread1 User",
+    "location": "Texas",
+    "phone": "312-345-5677",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+20:12:34.989 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response: {
+    "id": "4209",
+    "name": "Thread2 User",
+    "location": "Texas",
+    "phone": "312-345-5677",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Arts"
+    ]
+}
+20:18:35.521 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:18:35.521 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: https://57ce-27-5-200-251.ngrok-free.app
+20:18:35.526 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+20:18:35.526 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+20:18:35.527 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+20:18:35.527 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: null
+20:18:36.782 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Status Code: 200
+20:18:36.783 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+20:18:36.783 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=159
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:48:36 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:18:36.783 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: Access-Control-Allow-Headers=content-type
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Origin=*
+Content-Length=163
+Content-Type=application/json
+Date=Sat, 22 Feb 2025 14:48:36 GMT
+Ngrok-Agent-Ips=27.5.200.251
+X-Powered-By=tinyhttp
+20:18:36.865 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+20:18:36.866 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response: {
+    "id": "8d58",
+    "name": "Erica John",
+    "location": "New Jersey",
+    "phone": "313-456-7890",
+    "courses": [
+        "Arts",
+        "History",
+        "Accounts"
+    ]
+}
+19:48:27.086 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+19:48:27.086 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+19:48:27.104 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+19:48:27.104 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+19:48:27.104 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: null
+19:48:27.104 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+19:49:14.560 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+19:49:14.566 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+19:49:14.566 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+19:49:14.560 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+19:49:14.572 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+19:49:14.573 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Request Payload: null
+19:49:15.341 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+19:49:15.341 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 14:19:15 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+19:49:15.350 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Status Code: 200
+19:49:15.351 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 14:19:15 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=159
+19:49:15.489 [TestNG-test-API Test-2] INFO  com.api.filter.LogFilter - Response: {
+    "id": "8d58",
+    "name": "Erica John",
+    "location": "New Jersey",
+    "phone": "313-456-7890",
+    "courses": [
+        "Arts",
+        "History",
+        "Accounts"
+    ]
+}
+19:49:15.499 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:32:22.794 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+21:32:22.799 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+21:32:22.800 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+21:32:23.459 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+21:32:23.463 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 16:02:23 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:32:23.560 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:34:23.467 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+21:34:23.551 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Started!! - getUserTest1
+21:34:23.552 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Description!! - 
+21:34:24.988 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+21:34:24.989 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+21:34:24.990 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+21:34:25.647 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+21:34:25.652 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 16:04:25 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:34:25.733 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:34:26.057 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Passed!! - getUserTest1
+21:34:26.062 [main] INFO  com.api.listener.TestListener - Test Suite Finished!!
+21:36:12.704 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+21:36:12.786 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Started!! - getUserTest1
+21:36:12.787 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Description!! - 
+21:36:14.206 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+21:36:14.207 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+21:36:14.207 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+21:36:14.850 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+21:36:14.854 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 16:06:14 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:36:14.939 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:36:15.334 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Passed!! - getUserTest1
+21:36:15.340 [main] INFO  com.api.listener.TestListener - Test Suite Finished!!
+21:39:32.154 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+21:40:12.761 [main] INFO  com.api.listener.TestListener - Test Suite Started!!
+21:40:12.843 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Started!! - getUserTest1
+21:40:12.844 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Description!! - 
+21:40:14.308 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Base URI: http://localhost:3000
+21:40:14.308 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Header: Accept=*/*
+21:40:14.309 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Request Payload: null
+21:40:14.937 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Status Code: 200
+21:40:14.938 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response Header: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Wed, 05 Mar 2025 16:10:14 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:40:15.030 [TestNG-test-API Test-1] INFO  com.api.filter.LogFilter - Response: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:40:15.410 [TestNG-test-API Test-1] INFO  com.api.listener.TestListener - Test Passed!! - getUserTest1
+21:40:15.417 [main] INFO  com.api.listener.TestListener - Test Suite Finished!!
