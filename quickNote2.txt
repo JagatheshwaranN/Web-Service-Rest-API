@@ -419,7 +419,46 @@ public class BinarySearchTestContextXmlTest {
 
 Spring AOP [Aspect Oriented Programming]
 ==========
+Use of CommandLineRunner interface. It used to run the SpringbootApplication class.
+It is an alternative for ConfigurableApplicationContext. We use the overrided
+run method.
 
+@SpringBootApplication
+public class LearnAopApplication implements CommandLineRunner {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	Business1 business1;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(LearnAopApplication.class, args);
+	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		logger.info(business1.processData());
+	}
+}
 
+Intercept Business Methods
+==========================
+Here we are using the @Before annotation to intercept the business logic. Here, before
+the actual business logic is called, the below method is being intercepted.
+
+We need to use the @Before annotation as below. execution attribute is used to mention
+the path of the business package which we need to intercept.
+
+@Aspect
+@Configuration
+public class UserAccessAspect {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Before("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	public void beforeAspect(JoinPoint joinpoint) {
+		logger.info("Check for User Access");
+		logger.info("Allow execution for {}", joinpoint);
+	}
+}
 
