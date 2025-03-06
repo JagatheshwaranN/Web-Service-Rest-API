@@ -462,3 +462,74 @@ public class UserAccessAspect {
 	}
 }
 
+After Methods
+=============
+Similar to Before Methods, we have After Methods.
+
+@Aspect
+@Configuration
+public class UserAccessAfterAspect {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	// PointCut
+	@AfterReturning(value = "execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))", returning = "result")
+	public void afterAspectReturning(JoinPoint joinpoint, Object result) {
+		// Advice
+		logger.info("{} returned with value {}", joinpoint, result);
+	}
+	
+	@AfterThrowing(value = "execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))", throwing = "exception")
+	public void afterAspectThrowing(JoinPoint joinpoint, Throwable exception) {
+		// Advice
+		logger.info("{} returned with exception {}", joinpoint, exception);
+	}
+	
+	@After(value = "execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	public void afterAspect(JoinPoint joinpoint) {
+		// Advice
+		logger.info("After execution of {}", joinpoint);
+	}
+}
+
+Around Method
+=============
+Similar to Before and After, we have Around method which is used around the interception.
+
+@Aspect
+@Configuration
+public class AroundAspect {
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	// PointCut
+	@Around("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	public void beforeAspect(ProceedingJoinPoint joinpoint) throws Throwable {
+		// Advice
+		long statTime = System.currentTimeMillis();
+		joinpoint.proceed();
+		long timeTaken = System.currentTimeMillis() - statTime;
+		logger.info("Time taken by {} is {}", joinpoint, timeTaken);
+	}
+
+}
+
+CommonJoinPointConfig
+=====================
+Instead of declaring same Pointcut in multiple classes repeatedly, we can create a common
+JoinPoint using @Pointcut annotation and we can reuse it all classes.
+
+public class CommonJointPointConfiguration {
+
+	@Pointcut("execution(* com.learn_everyday.learn_aop.learn_aop.data.*.*(..))")
+	public void dataLayerExecution() {}
+	
+	@Pointcut("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	public void businessLayerExecution() {}
+}
+
+Aspect
+======
+It is a combination of PointCut(Execution) and Advice.
+The process of implementing AOP around your method is called as Weaving.
+The framework which implements it, is called as Weaver.

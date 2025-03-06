@@ -10,12 +10,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Aspect
 @Configuration
-public class UserAccessAspect {
+public class BeforeAspect {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Before("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	// PointCut
+	// @Before("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
+	@Before("com.learn_everyday.learn_aop.learn_aop.aspect.CommonJointPointConfiguration.dataLayerExecution()")
 	public void beforeAspect(JoinPoint joinpoint) {
+		// Advice
 		logger.info("Check for User Access");
 		logger.info("Allow execution for {}", joinpoint);
 	}
