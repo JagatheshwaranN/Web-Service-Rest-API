@@ -16,7 +16,8 @@ public class AroundAspect {
 	
 	// PointCut
 	// @Around("execution(* com.learn_everyday.learn_aop.learn_aop.business.*.*(..))")
-	@Around("com.learn_everyday.learn_aop.learn_aop.aspect.CommonJointPointConfiguration.businessLayerExecution()")
+//	@Around("com.learn_everyday.learn_aop.learn_aop.aspect.CommonJointPointConfiguration.businessLayerExecution()")
+	@Around("com.learn_everyday.learn_aop.learn_aop.aspect.CommonJointPointConfiguration.trackTimeAnnotation()")
 	public void beforeAspect(ProceedingJoinPoint joinpoint) throws Throwable {
 		// Advice
 		long statTime = System.currentTimeMillis();
