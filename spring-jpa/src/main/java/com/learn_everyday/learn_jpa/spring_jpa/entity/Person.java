@@ -5,9 +5,11 @@ import java.util.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 
 @Entity
 //@Table(name = "Person") - Can be used if in case, the table and POJO class names are different.
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
 public class Person {
 
 	@Id
