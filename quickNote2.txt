@@ -573,3 +573,38 @@ Aspect
 It is a combination of PointCut(Execution) and Advice.
 The process of implementing AOP around your method is called as Weaving.
 The framework which implements it, is called as Weaver.
+=================================================================================
+
+Firs Web Application
+====================
+Create a maven project with simple arch type and select package type as war.
+
+Updated the POM.xml file with below dependencies and plugins.
+=============================================================
+<artifactId>jakarta.jakartaee-web-api</artifactId>
+
+<artifactId>jakarta.servlet-api</artifactId>
+
+<plugin>
+<groupId>org.codehaus.cargo</groupId>
+<artifactId>cargo-maven3-plugin</artifactId>
+<version>1.10.18</version>
+<configuration>
+<container>
+<containerId>tomcat10x</containerId>
+<type>embedded</type>
+</container>
+<deployables>
+<deployable>
+<type>war</type>
+<location>
+${project.build.directory}/${project.build.finalName}.war</location>
+<properties>
+<context>/</context>
+</properties>
+</deployable>
+</deployables>
+</configuration>
+</plugin>
+
+=================================================================================
