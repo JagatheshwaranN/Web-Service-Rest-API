@@ -3,6 +3,7 @@ package webapp;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,17 +30,26 @@ public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+//	@Override
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//		PrintWriter out = response.getWriter();
+//		out.println("<html>");
+//		out.println("<head>");
+//		out.println("<title>First Web App</title>");
+//		out.println("</head>");
+//		out.println("<body>");
+//		out.println("My First Servlet..");
+//		out.println("</body>");
+//		out.println("</html>");
+//	}
+	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<title>First Web App</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("My First Servlet..");
-		out.println("</body>");
-		out.println("</html>");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String name = request.getParameter("name");
+		request.setAttribute("name", name);
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		
 	}
+
 	
 }

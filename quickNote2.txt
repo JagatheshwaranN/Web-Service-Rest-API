@@ -608,3 +608,29 @@ ${project.build.directory}/${project.build.finalName}.war</location>
 </plugin>
 
 =================================================================================
+Web.xml
+=======
+<welcome-file> - It is a simple redirection file. That is, when someone hits
+localhost:8080, it will redirect to login.do file.
+It is easy to write the dynamic HTML content in JSP instead of Servlet.
+Under WEB-INF folder, create a sub foder views and create a file named login.jsp
+Provide the title and body content.
+
+Then, move back to LoginServlet class and update the doGet() method to return jsp
+instead of servlet.
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		
+	}
+
+Passing Request Parameters using Get Method
+===========================================
+In LoginServlet class, doGet Method
+===================================
+String name = request.getParameter("name");
+request.setAttribute("name", name);
+
+In jsp file, we can access the name attribute using expression language / syntax.
+${name}
