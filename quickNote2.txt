@@ -634,3 +634,51 @@ request.setAttribute("name", name);
 
 In jsp file, we can access the name attribute using expression language / syntax.
 ${name}
+
+JSP - Scriplets [NOT RECOMMENDED]
+=================================
+In JSP, we can write the Java code inside the <% %>. They are called as Scriptlets.
+We can import java libraries (imports) using scriptlets.
+Scriptlets are not recommended to use in JSP's. For learning purpose only demoed.
+
+Example
+=======
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login JSP</title>
+</head>
+<body>
+My First JSP ${name}
+<%
+System.out.println("Java From JSP");
+Date date = new Date();
+%>
+<div>Current Date is <%=date%></div>
+</body>
+</html>
+
+Disadvantage of Get Parameter
+=============================
+We should not use Get Parameter to pass the Password. Because, when the 
+request goes over the network, it will pass through many routers, and intermediate
+servers. With the use of GET parameters, anyone can view the password sent in the
+request URL.
+
+We can use the form and POST request to send the password.
+
+Next Steps
+==========
+1. Create a form inside a JSP file. Set the method as POST otherwise the request will be
+treated as GET.
+2. Create a input username field and submit button.
+3. When we ran the code, JSP will shown input field, enter the name and click on login
+button, you will get 405 status as the login.do servlet don't have the doPost method to
+handle post method / request.
+4. We have creat a doPost method in LoginServlet and it will handle the post method.
+
+
