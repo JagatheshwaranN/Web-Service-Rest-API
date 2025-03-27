@@ -676,9 +676,21 @@ Next Steps
 1. Create a form inside a JSP file. Set the method as POST otherwise the request will be
 treated as GET.
 2. Create a input username field and submit button.
-3. When we ran the code, JSP will shown input field, enter the name and click on login
+3. When we ran the code, JSP will show input field, enter the name and click on login
 button, you will get 405 status as the login.do servlet don't have the doPost method to
 handle post method / request.
-4. We have creat a doPost method in LoginServlet and it will handle the post method.
+4. We have to create a doPost method in LoginServlet and it will handle the post method.
+5. Added a password feild to the login.jsp file to enter the password.
+6. Created UserValidationService class to verify the user is valid or not. For now, its
+hardcoded.
+7. Updated the doPost() method in LoginServlet to use the uservalidation method and based
+on the response, the view file will be displayed.
 
-
+Spring MVC
+==========
+1. Lets do a little bit of revamping
+2. We need Sprig MVC framework and its dependencies
+3. Spring MVC uses Front Controller Pattern -> Dispatcher Servlet
+	a. Add Dispatcher Servlet to web.xml
+4. DispatcherServlet needs an Spring Application Context to launch.
+	a. We will create an xml(/WEB-INF/todo-servlet.xml)
