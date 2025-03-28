@@ -694,3 +694,28 @@ Spring MVC
 	a. Add Dispatcher Servlet to web.xml
 4. DispatcherServlet needs an Spring Application Context to launch.
 	a. We will create an xml(/WEB-INF/todo-servlet.xml)
+
+Work flow
+=========
+1. Whenever any request comes in, it will reach DispatcherServlet as POC.
+2. In DispatcherServlet, we have provided the url pattern as spring-mvc
+so whatever request comes with this URL is served by DispatcherServlet.
+3. Now, we have sent the /login with url pattern and DispatcherServlet
+knows where the /login is defined in the code and it redirect the request
+to the Controller who handles /login calls.
+
+Now, we have created a package spring_mvc and LoginController class. The 
+class has GetRequest Mapping URL ("/login"). It returns simple message.
+
+================================================
+sping-mvc
+DispatcherServlet -> Front Controller
+
+/login -> LoginController (Handler)
+Welcome to Spring MVC
+
+View Resolver
+login -> /WEB-INF/views/login.jsp
+
+login.jsp -> View
+================================================
