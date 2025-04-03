@@ -17,7 +17,7 @@ Date date = new Date();
 <div>Current Date is <%=date%></div>
  --%>
 
-<form action="/login.do" method="post">
+<form action="/spring-mvc/login" method="post">
 <p><font color="red">${errorMessage}</font></p>
 UserName: <input type="text" name="name" /> Password: <input type="password" name="password" /> <input type="submit" name="login" value="Login" /> 
 </form>

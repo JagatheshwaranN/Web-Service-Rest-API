@@ -719,3 +719,23 @@ login -> /WEB-INF/views/login.jsp
 
 login.jsp -> View
 ================================================
+Spring MVC Architecure
+======================
+1. Any incoming request is send to / served by Front Controller(DispatcherServlet)
+2. Front Controller look at the subsquent part of the request url and let says its
+/login.
+3. Front Controller then look for any controller is annotated with /login.
+4. Front Controller finds the controller method available, and it will be executed.
+5. Then Controller return / inform the Front Controller that which response (view) 
+should be given / rendered. (It sends a string called Login)
+6. Then Front Controller will make use of the View Resolver, it will go thru View
+Resolver and checks for Login JSP.
+7. Then View Resolver directs the JSP to be shown, then Front Controller executes
+the JSP and return the response.
+
+============
+RequestParam & ModalMap
+=======================
+@RequestParam is used to get the parameter from the Request in Spring MVC flow.
+ModelMap is used to get the parameter value from the Request and send it to the View 
+model. I.e., View Resolver JSP.
