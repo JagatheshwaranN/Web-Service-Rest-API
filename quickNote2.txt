@@ -748,7 +748,7 @@ We have remove the old controller code and kept the Spring MVC logic. Used Autow
 Dependency Injection.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Maven Overview
+Maven Overview [Platform Specific Tool - Depends on Java]
 ==============
 Maven - Its a build tool.
 
@@ -867,3 +867,82 @@ Recommendations
 1. Avoid SNAPSHOTs.
 2. Use ONLY released versions in PRODUCTION.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Gradle
+======
+1. Goal: Build, automate, and deliver better software, faster.
+	a. Build Anything: Cross-Platform Tool
+	Example:Java, C/C++, Javascript, and Python, etc.
+	b. Automate Everything: Completely Programmable
+		1. Complete flexibility
+		2. Uses a DSL
+			a. Supports Groovy and Kotlin
+	c. Deliver Faster: Blazing-fast builds
+		1. Compile avoidance to advanced caching
+		2. Can speed up Maven builds by up to 90%
+			a. Incrementality - Gradle runs only what is necessary
+				Example: Compiles only changed files
+			b. Build Cache - Reuses the build outputs of other Gradle builds with same inputs
+2. Same Project layout as Maven
+
+Disadvantage
+============
+1. IDE support is still evolving. Its not as good as Maven.
+
+Create a SpringBoot project using Gradle.
+
+In Maven, all our dependencies are declared in the pom.xml.
+In Gradle we use the build.gradle file to declare / store the dependencies. Apart from this,
+we have settings.gradle file were we have our project name and plugin management.
+
+By default, Eclipse will not download the dependencies in Gradle project. We have to manually do it.
+Project > Gradle > Refresh Gradle Project.
+
+Gradle Plugins
+==============
+Top 3 Java Plugins for Gradle:
+1. Java Plugin: Java compilation + testing + bundling capabilities.
+	a. Default Layout : Same as Maven Project Structure.
+	b. Key Task: Build
+
+2. Dependency Management: Maven like depedency management
+	group: 'org.springframework', name: 'spring-core', version: '10.1.3.RELEASE'
+	
+We can use it like implementation group: 'org.springframework', name: 'spring-core', version: '10.1.3.RELEASE'
+Shortform as below.
+implementation 'org.springframework:spring-core:10.1.3.RELEASE'
+
+3. Spring Boot Gradle Plugin: Spring Boot Support in Gradle
+	a. Package executable SpringBoot jar, Container Image (bootJar, bootBuildImage)
+	b. Use dependency management enabled by spring-boot-dependencies
+
+How to create a Gradle Task?
+============================
+Project > Right Click > Run As > Run Configuration > Gradle Task > New Configuration.
+Type build in input field under the Create Tasks section.
+Click Apply > Save.
+Navigate to console to see the complete lists of tasks which are executed as part of build task.
+
+Post execution, bin directory will be created. View the same in System Explorer. In System Explorer,
+we can see both the bin and build folders. 
+
+Here, *Build* folder is the most important fodler, this is the folder which made use of Gradle to store 
+all the artifacts are generated.
+
+Maven Vs Gradle - Which one to use?
+===================================
+1. Lets start with few popular examples.
+	a. Spring Framework - Using Gradle since 2012.
+	a. Spring Boot - Using Gradle since 2020.
+	c. Spring Cloud - Continues to use Maven.
+2. Top Maven Advantages: Familiar, Simple and Restrictive.
+3. Top Gradle Advantages: Faster build times and less verbose.
+
+In Gradle, as mentioned it follows, Groovy format and it also allows to have the java code in it.
+
+For example,
+tasks.register('welcome') {
+	doLast {
+		System.out.println("Welcome");
+	}
+}
