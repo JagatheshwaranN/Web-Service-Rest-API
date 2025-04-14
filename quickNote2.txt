@@ -737,5 +737,133 @@ the JSP and return the response.
 RequestParam & ModalMap
 =======================
 @RequestParam is used to get the parameter from the Request in Spring MVC flow.
-ModelMap is used to get the parameter value from the Request and send it to the View 
-model. I.e., View Resolver JSP.
+
+1. Model can used to pass the data between the controller and view.
+2. ModelMap is used to get the parameter value from the Request and send it to the View 
+   model. I.e., View Resolver JSP.
+   
+LoginService to Authenticate
+============================
+We have remove the old controller code and kept the Spring MVC logic. Used Autowired for
+Dependency Injection.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Maven Overview
+==============
+Maven - Its a build tool.
+
+What is Maven?
+==============
+Things you do when writing code each day.
+1. Create new Projects.
+2. Manages dependencies and their versions.
+	a. Spring, Spring MVC, Hibernate,etc.
+	b. Add / Modify dependencies.
+3. Build a JAR file.
+4. Run your app locally in TOMCAT / JETTY /Any WebServers.
+5. Run unit tests.
+6. Deploy to a test environment, etc..
+
+Exploring POM.xml [Project Object Model]
+========================================
+1. Let's explore Project Object Model  pom.xml
+	a. Maven dependencies: Frameworks & Libraries used in the project.
+2. Why there are so many dependencies in the classpath though its not added in POM.xml?
+	a. They are Transitive Dependencies.
+3. To get the details of Maven dependencies as below.
+	a. Maven build > help:effective-pom
+4. Sometimes, we declare the depencies without the version and still the dependencies
+   get downloaded?
+	a. Yes, its downloaded even when we don't specify the version. Its from the Effective
+	POM. if the effective pom has the dependencies then, with that reference the dependencies
+	will get downloaded.
+
+What is GroupId & ArtifactId?
+=============================
+To specify the dependencies, we need the GroupId and ArtifactId.
+Name of the project is identified by using the groupId & ArtifactId.
+	1. GroupId - Similar to Package Name.
+	2. ArtifactId - Similar to Class Name.
+*Note: These are important, because the other projects use our project using this identifiers.
+
+To generate depedency tree / to see effective-pom
+=================================================
+Run As > Maven Build > Goal > help:effective-pom 
+Run As > Maven Build > Goal > dependency:tree
+
+Debugging Tips
+==============
+Whenever you face issue with POM.xml, look out for the effective-pom where most of your problems
+will be fixed.
+
+Maven Build Life Cycle
+======================
+1. Whenever we run a maven command, maven build life cycle is is used.
+2. Build Life Cycle is a sequence of Steps.
+	a. Validate - Validate everything is good.
+	b. Compile - Compile the written code.
+	c. Test - Run a unit test.
+	d. Package - Package the jar file.
+	e. Integration Test - Run a integration test.
+	f. Verify - Verify the code.
+	g. Install - Install your jar file.
+	h. Deploy - If you have Deploy configured, it will deploy to your environment.
+
+How does Maven Works?
+=====================
+1. Maven follows Convention over Configuration.
+	a. Predefined folder structure.
+	b. Almost all Java projects follow Maven structure (Consistency).
+2. Maven Central Repository contains Jar and (others) indexed by artifactId and groupId.
+	a. Stores all the versions of dependencies
+	b. Repositories > Repository
+	c. PluginRepositories > PluginRepository
+3. When a dependency is added to pom.xml, Maven tries to download the dependency.
+	a. Downloaded dependencies are stored inside your maven local repository.
+	b. Local Repository : A temp folder on your machine where maven stores the jar and
+	   dependency files that are downloaded from Maven Repository.
+
+Important Maven Commands
+========================
+1. mvn --version
+Give the details about the Maven jar we are using.
+
+2. mvn compile: Compile Source Files
+It is used to compile ONLY the source files.
+
+3. mvn test-compile: Compile both Source and Test Files
+It is used to compile both the source and test files.
+
+4. mvn clean: Deletes the target directory.
+It is used to delete the Target fodler.
+
+5. mvn test: Run Unit Tests
+It will compile source, and test files. Then, it will run the unit tests.
+
+6. mvn package: To create Jar
+It is used to create a Jar file.
+
+How Spring Projects are Versioned?
+==================================
+Version scheme - MAJOR.MINOR.PATCH[-MODIFIER]
+1. MAJOR: Significant  amount of work to upgrade (10.0.0 - 11.0.0)
+2. MINOR: Little to no work to upgrade (10.1.0 to 10.2.0)
+3. PATCH: No work to upgrade (10.5.4 to 10.5.5)
+4. MODIFIER: Optional modifier
+	a. Milestones - M1, M2,.. (10.3.0-M1)
+	b. Release Condidate - RC1, RC2,.. (10.3.0-RC1)
+	c. Snapshots - SNAPSHOT (Its version under development)
+
+Example versions in order
+=========================
+1. 10.0.0-SNAPSHOT
+2. 10.0.0-M1
+3. 10.0.0-M2
+4. 10.0.0-RC1
+5. 10.0.0
+
+Recommendations
+===============
+1. Avoid SNAPSHOTs.
+2. Use ONLY released versions in PRODUCTION.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
