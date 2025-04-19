@@ -18,37 +18,49 @@ public class TestListener implements ITestListener {
 	public ExtentReports extentReports;
 	public ExtentTest extentTest;
 
+	@Override
 	public void onStart(ITestContext context) {
 		extentReports = ExtentReport.getInstance();
-		logger.info("Test Suite Started!!");
+		logger.info("{} is Started!!", context.getCurrentXmlTest().getName());
 	}
 
+	@Override
 	public void onFinish(ITestContext context) {
-		logger.info("Test Suite Finished!!");
+		logger.info("{} is Finished!!", context.getCurrentXmlTest().getName());
 		extentReports.flush();
+		ExtentReport.removeTest();
 	}
 
+	@Override
 	public void onTestStart(ITestResult result) {
-		extentTest = extentReports.createTest(result.getName());
-		ExtentReport.setTest(extentTest);
-		logger.info("Test Started!! - " + result.getMethod().getMethodName());
-		logger.info("Description!! - " + result.getMethod().getDescription());
-		extentTest.log(Status.INFO, "Test Started!! - " + result.getMethod().getMethodName());
+//		String testName = result.getTestClass().getName() + " :: " + result.getMethod().getMethodName();
+//		extentTest = extentReports.createTest(testName);
+//		ExtentReport.setTest(extentTest);
+//		logger.info("{} Test is Started!!", testName);
+//		extentTest.log(Status.INFO, result.getName() + " Test is Started!!");
+		ExtentTest test = extentReports
+				.createTest(result.getTestClass().getName() + " :: " + result.getMethod().getMethodName());
+		ExtentReport.setTest(result, test);
+		test.info(result.getMethod().getMethodName() + " Test is Started!!");
 	}
 
+	@Override
 	public void onTestSuccess(ITestResult result) {
-		logger.info("Test Passed!! - " + result.getMethod().getMethodName());
-		extentTest.log(Status.INFO, "Test Passed!! - " + result.getMethod().getMethodName());
+		logger.info("{} Test is Passed!!", result.getName());
+//		extentTest.log(Status.PASS, result.getName() + " Test is Passed!!");
+		ExtentReport.getTest(result).pass(result.getMethod().getMethodName() + " Test is Passed!!");
 	}
 
+	@Override
 	public void onTestFailure(ITestResult result) {
-		logger.error("Test Failed!! - " + result.getMethod().getMethodName());
-		extentTest.log(Status.INFO, "Test Failed!! - " + result.getMethod().getMethodName());
+		logger.info("{} Test is Failed!!", result.getName());
+		extentTest.log(Status.FAIL, result.getName() + " Test is Failed!!");
 	}
 
+	@Override
 	public void onTestSkipped(ITestResult result) {
-		logger.info("Test Skipped!! - " + result.getMethod().getMethodName());
-		extentTest.log(Status.INFO, "Test Skipped!! - " + result.getMethod().getMethodName());
+		logger.info("{} Test is Skipped!! - " + result.getName());
+		extentTest.log(Status.SKIP, result.getName() + "Test is Skipped!!");
 	}
 
 }

@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [API Test Suite]">
-  <test thread-count="5" parallel="methods" name="API Test(failed)">
+<suite parallel="tests" name="Failed suite [API Test Suite]">
+  <listeners>
+    <listener class-name="com.api.listener.TestListener"/>
+  </listeners>
+  <test thread-count="5" parallel="tests" name="GET API Test(failed)">
     <classes>
       <class name="com.api.test.GetUserTest">
         <methods>
           <include name="getUserTest1"/>
-          <include name="getUserTest2"/>
         </methods>
       </class> <!-- com.api.test.GetUserTest -->
     </classes>
-  </test> <!-- API Test(failed) -->
+  </test> <!-- GET API Test(failed) -->
+  <test thread-count="5" parallel="tests" name="PUT API Test(failed)">
+    <classes>
+      <class name="com.api.test.UpdateUserTest">
+        <methods>
+          <include name="updateUserTest1"/>
+        </methods>
+      </class> <!-- com.api.test.UpdateUserTest -->
+    </classes>
+  </test> <!-- PUT API Test(failed) -->
 </suite> <!-- Failed suite [API Test Suite] -->

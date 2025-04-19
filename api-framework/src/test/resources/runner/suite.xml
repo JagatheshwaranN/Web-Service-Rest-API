@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite>
-<suite name="API Test Suite">
-<listeners>
+<suite name="API Test Suite" thread-count="5" parallel="tests">
+	<listeners>
 		<listener class-name="com.api.listener.TestListener" />
 	</listeners>
-	<test thread-count="4" name="API Test" parallel="methods">
+	<test name="GET API Test">
 		<classes>
-			<class name="com.api.test.GetUserTest">
-				<methods>
-					<include name="getUserTest1" />
-					<!-- <include name="getUserTest2" /> -->
-				</methods>
-			</class>
-			<!-- <class name="com.api.test.AddUserTest">
-				<methods>
-					<include name="addUserTest1" />
-					<include name="addUserTest2" />
-				</methods>
-			</class> -->
+			<class name="com.api.test.GetUserTest" />
+		</classes>
+	</test>
+	<test name="PUT API Test">
+		<classes>
+			<class name="com.api.test.UpdateUserTest" />
 		</classes>
 	</test>
 </suite>
