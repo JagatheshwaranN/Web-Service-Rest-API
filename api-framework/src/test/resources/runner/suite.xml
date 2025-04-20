@@ -9,6 +9,11 @@
 			<class name="com.api.test.GetUserTest" />
 		</classes>
 	</test>
+	<test name="POST API Test">
+		<classes>
+			<class name="com.api.test.AddUserTest" />
+		</classes>
+	</test>
 	<test name="PUT API Test">
 		<classes>
 			<class name="com.api.test.UpdateUserTest" />

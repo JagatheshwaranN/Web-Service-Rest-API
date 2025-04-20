@@ -13,8 +13,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentReport {
 
 	private static ExtentReports extentReports;
-//	private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
-
 	private static final ThreadLocal<ExtentTest> extentTestThreadLocal = new ThreadLocal<>();
 	private static final Map<ITestResult, ExtentTest> testMap = new ConcurrentHashMap<>();
 
@@ -50,17 +48,6 @@ public class ExtentReport {
 		return extentReports;
 	}
 
-//	public static void setTest(ExtentTest test) {
-//		ExtentReport.extentTest.set(test);
-//	}
-//
-//	public static ExtentTest getTest() {
-//		if (extentTest.get() == null) {
-//			System.out.println("ExtentTest is NULL");
-//		}
-//		return extentTest.get();
-//	}
-//
 	public static void removeTest() {
 		extentTestThreadLocal.remove();
 	}

@@ -27,19 +27,14 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onFinish(ITestContext context) {
 		logger.info("{} is Finished!!", context.getCurrentXmlTest().getName());
-		extentReports.flush();
 		ExtentReport.removeTest();
+		extentReports.flush();
 	}
 
 	@Override
 	public void onTestStart(ITestResult result) {
-//		String testName = result.getTestClass().getName() + " :: " + result.getMethod().getMethodName();
-//		extentTest = extentReports.createTest(testName);
-//		ExtentReport.setTest(extentTest);
-//		logger.info("{} Test is Started!!", testName);
-//		extentTest.log(Status.INFO, result.getName() + " Test is Started!!");
-		ExtentTest test = extentReports
-				.createTest(result.getTestClass().getName() + " :: " + result.getMethod().getMethodName());
+		String testName = result.getTestClass().getName() + " :: " + result.getMethod().getMethodName();
+		ExtentTest test = extentReports.createTest(testName);
 		ExtentReport.setTest(result, test);
 		test.info(result.getMethod().getMethodName() + " Test is Started!!");
 	}
@@ -47,7 +42,6 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		logger.info("{} Test is Passed!!", result.getName());
-//		extentTest.log(Status.PASS, result.getName() + " Test is Passed!!");
 		ExtentReport.getTest(result).pass(result.getMethod().getMethodName() + " Test is Passed!!");
 	}
 
@@ -55,12 +49,13 @@ public class TestListener implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		logger.info("{} Test is Failed!!", result.getName());
 		extentTest.log(Status.FAIL, result.getName() + " Test is Failed!!");
+		ExtentReport.getTest(result).fail(result.getMethod().getMethodName() + " Test is Failed!!");
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		logger.info("{} Test is Skipped!! - " + result.getName());
-		extentTest.log(Status.SKIP, result.getName() + "Test is Skipped!!");
+		ExtentReport.getTest(result).skip(result.getMethod().getMethodName() + " Test is Skipped!!");
 	}
 
 }

@@ -1050,3 +1050,86 @@ Content-Length=163
 17:40:57.793 [TestNG-tests-2] INFO  com.api.listener.TestListener - updateUserTest1 Test is Passed!!
 17:40:57.812 [TestNG-tests-2] INFO  com.api.listener.TestListener - PUT API Test is Finished!!
 17:40:57.823 [TestNG-tests-1] INFO  com.api.listener.TestListener - GET API Test is Finished!!
+21:09:43.943 [TestNG-tests-2] INFO  com.api.listener.TestListener - POST API Test is Started!!
+21:09:43.943 [TestNG-tests-3] INFO  com.api.listener.TestListener - PUT API Test is Started!!
+21:09:43.943 [TestNG-tests-1] INFO  com.api.listener.TestListener - GET API Test is Started!!
+21:09:45.063 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Base URI:  http://localhost:3000
+21:09:45.065 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Request Headers: Accept=*/*
+21:09:45.066 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Request Payload: Optional.empty
+21:09:45.273 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Base URI:  http://localhost:3000
+21:09:45.274 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Request Headers: Accept=*/*
+Content-Type=application/json
+21:09:45.274 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Request Payload: Optional[{"name":"Thread3 User","location":"Texas","phone":"312-345-5677","courses":["Science","Commerce","Accounts"]}]
+21:09:45.281 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Base URI:  http://localhost:3000
+21:09:45.281 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Request Headers: Accept=*/*
+Content-Type=application/json
+21:09:45.282 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Request Payload: Optional[{"name":"Thread1 User","location":"New York","phone":"312-345-5677","courses":["Science","Commerce","Accounts"]}]
+21:09:46.169 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Status Code: 201
+21:09:46.170 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Response Headers: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sun, 20 Apr 2025 15:39:46 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=160
+21:09:46.170 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Status Code: 200
+21:09:46.171 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Response Headers: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sun, 20 Apr 2025 15:39:46 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:09:46.180 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Status Code: 200
+21:09:46.183 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Response Headers: X-Powered-By=tinyhttp
+Access-Control-Allow-Origin=*
+Access-Control-Allow-Methods=GET, HEAD, PUT, PATCH, POST, DELETE
+Access-Control-Allow-Headers=content-type
+Content-Type=application/json
+Date=Sun, 20 Apr 2025 15:39:46 GMT
+Connection=keep-alive
+Keep-Alive=timeout=5
+Content-Length=163
+21:09:46.297 [TestNG-tests-3] INFO  com.api.filter.LogFilter - Response Body: {
+    "name": "Thread1 User",
+    "location": "New York",
+    "phone": "312-345-5677",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ],
+    "id": "0cde"
+}
+21:09:46.297 [TestNG-tests-2] INFO  com.api.filter.LogFilter - Response Body: {
+    "id": "82a2",
+    "name": "Thread3 User",
+    "location": "Texas",
+    "phone": "312-345-5677",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:09:46.297 [TestNG-tests-1] INFO  com.api.filter.LogFilter - Response Body: {
+    "id": "9d68",
+    "name": "Nate Eaten",
+    "location": "California",
+    "phone": "313-456-6768",
+    "courses": [
+        "Science",
+        "Commerce",
+        "Accounts"
+    ]
+}
+21:09:46.442 [TestNG-tests-3] INFO  com.api.listener.TestListener - updateUserTest1 Test is Passed!!
+21:09:46.453 [TestNG-tests-1] INFO  com.api.listener.TestListener - getUserTest1 Test is Passed!!
+21:09:46.465 [TestNG-tests-2] INFO  com.api.listener.TestListener - addUserTest1 Test is Passed!!
+21:09:46.473 [TestNG-tests-2] INFO  com.api.listener.TestListener - POST API Test is Finished!!
+21:09:46.482 [TestNG-tests-3] INFO  com.api.listener.TestListener - PUT API Test is Finished!!
+21:09:46.485 [TestNG-tests-1] INFO  com.api.listener.TestListener - GET API Test is Finished!!
