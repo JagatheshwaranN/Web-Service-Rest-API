@@ -4,6 +4,6 @@ public class Pen implements Writer {
 
 	@Override
 	public void write() {
-		System.out.println("Student write exams using Pen..");
+		System.out.println("Teacher / Student write exams using Pen..");
 	}
 }

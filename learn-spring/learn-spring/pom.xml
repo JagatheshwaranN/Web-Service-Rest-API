@@ -7,7 +7,7 @@
 	<artifactId>learn-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>learn-spring</name>
-	<description>Demo project for Spring</description>
+	<description>Demo project for Spring Using XML configurations</description>
 	<url />
 	<licenses>
 		<license />
@@ -31,6 +31,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>6.2.8</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.38</version>
 		</dependency>
 	</dependencies>
 </project>
