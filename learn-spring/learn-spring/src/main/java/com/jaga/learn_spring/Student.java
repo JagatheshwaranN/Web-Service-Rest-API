@@ -2,11 +2,18 @@ package com.jaga.learn_spring;
 
 public class Student {
 
-	public Student() {
-		System.out.println("Student is created..");
+	private Writer writer;
+
+	public Writer getWriter() {
+		return writer;
 	}
 
-	public void show() {
-		System.out.println("Display Student");
+	public void setWriter(Writer writer) {
+		this.writer = writer;
 	}
+
+	public void writeExam() {
+		writer.write();
+	}
+
 }

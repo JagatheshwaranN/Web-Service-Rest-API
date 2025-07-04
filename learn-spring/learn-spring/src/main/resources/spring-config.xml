@@ -3,6 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<bean id="student1" class="com.jaga.learn_spring.Student"></bean>
+<bean id="student1" class="com.jaga.learn_spring.Student" autowire="byType">
+	<!-- <property name="age" value="20" />
+	<property name="name" value="Ram" /> -->
+	<!-- <property name="writer" ref="writer" /> -->
+</bean>
 <bean id="student2" class="com.jaga.learn_spring.Student"></bean>
+<bean id="pen1" class="com.jaga.learn_spring.Pen"></bean>
+<bean id="pencil1" class="com.jaga.learn_spring.Pencil" primary="true"></bean>
 </beans>
+

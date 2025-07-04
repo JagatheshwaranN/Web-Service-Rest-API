@@ -8,8 +8,10 @@ public class LearnSpringApplication {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
 		// Student student = context.getBean(Student.class);
-		Student student = (Student) context.getBean("student2");
-		student.show();
+		Student student = (Student) context.getBean("student1");
+//		System.out.println(student.getAge());
+//		System.out.println(student.getName());
+		student.writeExam();
 	}
 
 }
