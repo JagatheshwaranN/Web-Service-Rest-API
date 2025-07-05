@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,43 +24,63 @@ public class StudentController {
 	private StudentService studentService;
 
 	@GetMapping("/students")
-	public List<Student> getStudents() {
-		return studentService.readStudents();
+	public ResponseEntity<List<Student>> getStudents() {
+		List<Student> students = studentService.readStudents();
+		if (students.isEmpty()) {
+			return new ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 	}
 
 	@GetMapping("/students/{id}")
-	public Student getStudent(@PathVariable("id") int id) {
-		return studentService.readStudentById(id);
+	public ResponseEntity<Student> getStudent(@PathVariable("id") int id) {
+		Student student = studentService.readStudentById(id);
+		if (student == null) {
+			return new ResponseEntity<Student>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Student>(student, HttpStatus.OK);
 	}
 
 	@PostMapping("/students")
-	public String postStudent(@RequestBody Student student) {
-		return studentService.createStudent(student);
+	public ResponseEntity<String> postStudent(@RequestBody Student student) {
+		String message = studentService.createStudent(student);
+		return new ResponseEntity<String>(message, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/students/{id}")
-	public String putStudent(@RequestBody Student student) {
-		return studentService.updateStudent(student);
+	public ResponseEntity<String> putStudent(@RequestBody Student student) {
+		String message = studentService.updateStudent(student);
+		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/students/{id}")
-	public String deleteStudent(@PathVariable("id") int id) {
-		return studentService.deleteStudent(id);
+	public ResponseEntity<String> deleteStudent(@PathVariable("id") int id) {
+		String message = studentService.deleteStudent(id);
+		return new ResponseEntity<String>(message, HttpStatus.NO_CONTENT);
 	}
 
 	@DeleteMapping("/students")
-	public String deleteStudents() {
-		return studentService.deleteStudents();
+	public ResponseEntity<String> deleteStudents() {
+		String message = studentService.deleteStudents();
+		return new ResponseEntity<String>(message, HttpStatus.NO_CONTENT);
 	}
 
 	@GetMapping("/students/subject/{subject}")
-	public List<Student> getStudents(@PathVariable("subject") String subject) {
-		return studentService.readStudentBySubject(subject);
+	public ResponseEntity<List<Student>> getStudents(@PathVariable("subject") String subject) {
+		List<Student> students = studentService.readStudentBySubject(subject);
+		if (students.isEmpty()) {
+			return new ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 	}
 
 	@PostMapping("/students/filter")
-	public List<Student> getStudents(@Param("gender") String gender, @Param("subject") String subject) {
-		return studentService.readStudentByGenderAndSubject(gender, subject);
+	public ResponseEntity<List<Student>> getStudents(@Param("gender") String gender, @Param("subject") String subject) {
+		List<Student> students = studentService.readStudentByGenderAndSubject(gender, subject);
+		if (students.isEmpty()) {
+			return new ResponseEntity<List<Student>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Student>>(students, HttpStatus.OK);
 	}
 
 }
