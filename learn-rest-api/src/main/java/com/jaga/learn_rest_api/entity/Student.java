@@ -15,6 +15,12 @@ public class Student {
 
 	private String name;
 
+	private String gender;
+
 	private String subject;
+
+	public Student() {
+
+	}
 
 }

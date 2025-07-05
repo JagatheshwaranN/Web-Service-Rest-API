@@ -19,7 +19,7 @@ public class StudentService {
 	}
 
 	public Student readStudentById(int id) {
-		return studentRepository.findById(id).orElse(new Student(0, null, null));
+		return studentRepository.findById(id).orElse(new Student(0, null, null, null));
 	}
 
 	public String createStudent(Student student) {
@@ -40,6 +40,15 @@ public class StudentService {
 	public String deleteStudents() {
 		studentRepository.deleteAll();
 		return "All Students deleted.";
+	}
+
+	// Declaring custom JPA Method
+	public List<Student> readStudentBySubject(String subject) {
+		return studentRepository.findBySubject(subject);
+	}
+
+	public List<Student> readStudentByGenderAndSubject(String gender, String subject) {
+		return studentRepository.findByGenderAndSubject(gender, subject);
 	}
 
 }

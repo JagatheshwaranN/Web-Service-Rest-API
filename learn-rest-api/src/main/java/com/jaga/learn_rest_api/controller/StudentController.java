@@ -3,6 +3,7 @@ package com.jaga.learn_rest_api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,13 +42,23 @@ public class StudentController {
 	}
 
 	@DeleteMapping("/students/{id}")
-	public void deleteStudent(@PathVariable("id") int id) {
-		studentService.deleteStudent(id);
+	public String deleteStudent(@PathVariable("id") int id) {
+		return studentService.deleteStudent(id);
 	}
 
 	@DeleteMapping("/students")
-	public void deleteStudents() {
-		studentService.deleteStudents();
+	public String deleteStudents() {
+		return studentService.deleteStudents();
+	}
+
+	@GetMapping("/students/subject/{subject}")
+	public List<Student> getStudents(@PathVariable("subject") String subject) {
+		return studentService.readStudentBySubject(subject);
+	}
+
+	@PostMapping("/students/filter")
+	public List<Student> getStudents(@Param("gender") String gender, @Param("subject") String subject) {
+		return studentService.readStudentByGenderAndSubject(gender, subject);
 	}
 
 }

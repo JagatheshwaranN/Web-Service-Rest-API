@@ -10,7 +10,8 @@ import com.jaga.learn_rest_api.entity.Student;
 @Service
 public class OldStudentService {
 
-	List<Student> studentList = Arrays.asList(new Student(101, "Alex", "java"), new Student(102, "John", "spring"));
+	List<Student> studentList = Arrays.asList(new Student(101, "Alex", "Male", "java"),
+			new Student(102, "John", "Male", "spring"));
 
 	public List<Student> fetchStudents() {
 		return studentList;
@@ -29,7 +30,7 @@ public class OldStudentService {
 		if (flag) {
 			return studentList.get(index);
 		} else {
-			return new Student(0, null, null);
+			return new Student(0, null, null, null);
 		}
 	}
 
