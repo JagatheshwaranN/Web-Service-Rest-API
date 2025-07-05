@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <title>Register Course</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html"><button class="button">Home</button></a></li>
+                <li><a href="register.html"><button class="button">Register Course</button></a></li>
+                <li><a href="courses.html"><button class="button">Available Courses</button></a></li>
+                <li><a href="students.html"><button class="button">Enrolled Students</button></a></li>
+            </ul>
+        </nav>
+    </header>
+    </header>
+    <main>
+        <form action="http://localhost:8080/courses/register" method="post">
+            <label for="name">Enter your Name</label>
+            <input type="text" name="name"><br><br>
+            <label for="email">Enter your Email Id</label>
+            <input type="email" name="emailId"><br><br>
+            <label for="course">Choose a Course</label>
+            <select id="course" name="courseName">
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="Spring Boot">Spring Boot</option>
+            </select>
+            <br><br>
+            <button type="submit">Register</button>
+        </form>
+    </main>
+    <footer>
+        <p>Course Registration &copy; Copyright 2025</p>
+    </footer>
+</body>
+</html>

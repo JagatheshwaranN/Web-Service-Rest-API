@@ -3,6 +3,7 @@ package com.learn_everyday.course_registration_app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import com.learn_everyday.course_registration_app.entity.CourseRegistry;
 import com.learn_everyday.course_registration_app.service.CourseService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5500")
 public class CourseController {
 
 	@Autowired
