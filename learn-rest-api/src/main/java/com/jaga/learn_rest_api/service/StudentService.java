@@ -1,77 +1,45 @@
 package com.jaga.learn_rest_api.service;
 
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jaga.learn_rest_api.model.Student;
+import com.jaga.learn_rest_api.entity.Student;
+import com.jaga.learn_rest_api.repository.StudentRepository;
 
 @Service
 public class StudentService {
 
-	List<Student> studentList = Arrays.asList(new Student(101, "Alex", "java"), new Student(102, "John", "spring"));
+	@Autowired
+	private StudentRepository studentRepository;
 
-	public List<Student> fetchStudents() {
-		return studentList;
+	public List<Student> readStudents() {
+		return studentRepository.findAll();
 	}
 
-	public Student fetchStudentById(int id) {
-		int index = 0;
-		boolean flag = false;
-		for (int i = 0; i < studentList.size(); i++) {
-			if (studentList.get(i).getId() == id) {
-				index = i;
-				flag = true;
-				break;
-			}
-		}
-		if (flag) {
-			return studentList.get(index);
-		} else {
-			return new Student(0, null, null);
-		}
+	public Student readStudentById(int id) {
+		return studentRepository.findById(id).orElse(new Student(0, null, null));
 	}
 
-	public String addStudent(Student student) {
-		studentList.add(student);
+	public String createStudent(Student student) {
+		studentRepository.save(student);
 		return "Student added.";
 	}
 
 	public String updateStudent(Student student) {
-		int index = 0;
-		boolean flag = false;
-		for (int i = 0; i < studentList.size(); i++) {
-			if (studentList.get(i).getId() == student.getId()) {
-				index = i;
-				flag = true;
-				break;
-			}
-		}
-		if (flag) {
-			studentList.set(index, student);
-			return "Student updated.";
-		} else {
-			return "Student not exists.";
-		}
+		studentRepository.save(student);
+		return "Student updated.";
 	}
 
 	public String deleteStudent(int id) {
-		int index = 0;
-		boolean flag = false;
-		for (int i = 0; i < studentList.size(); i++) {
-			if (studentList.get(i).getId() == id) {
-				index = i;
-				flag = true;
-				break;
-			}
-		}
-		if (flag) {
-			studentList.remove(index);
-			return "Student deleted.";
-		} else {
-			return "Student not exists.";
-		}
+		studentRepository.deleteById(id);
+		return "Student deleted.";
+	}
+
+	public String deleteStudents() {
+		studentRepository.deleteAll();
+		return "All Students deleted.";
 	}
 
 }
