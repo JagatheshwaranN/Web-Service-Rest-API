@@ -19,7 +19,7 @@
     </header>
     </header>
     <main>
-        <form action="http://localhost:8080/courses/register" method="post">
+        <!-- <form action="http://localhost:8080/courses/register" method="post">
             <label for="name">Enter your Name</label>
             <input type="text" name="name"><br><br>
             <label for="email">Enter your Email Id</label>
@@ -32,10 +32,26 @@
             </select>
             <br><br>
             <button type="submit">Register</button>
+        </form> -->
+        <form id="registrationForm">
+            <label for="name">Enter your Name</label>
+            <input type="text" name="name" required><br><br>
+            <label for="email">Enter your Email Id</label>
+            <input type="email" name="emailId" required><br><br>
+            <label for="course">Choose a Course</label>
+            <select id="course" name="courseName" required>
+                <option value="">-- Select Course --</option>
+                <option value="Java">Java</option>l̥
+                <option value="Python">Python</option>
+                <option value="Spring Boot">Spring Boot</option>
+            </select><br><br>
+            <button type="submit">Register</button>
         </form>
+        <div id="responseMessage" class="message-box"></div>
     </main>
     <footer>
         <p>Course Registration &copy; Copyright 2025</p>
     </footer>
+    <script type="text/javascript" src="script/index.js"></script>
 </body>
 </html>

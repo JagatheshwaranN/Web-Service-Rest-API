@@ -1,6 +1,7 @@
 package com.learn_everyday.course_registration_app.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,9 +32,11 @@ public class CourseController {
 	}
 
 	@PostMapping("courses/register")
-	public String registerToCourse(@RequestParam("name") String name, @RequestParam("emailId") String emailId,
-			@RequestParam("courseName") String courseName) {
+	public Map<String, String> registerToCourse(@RequestParam("name") String name,
+			@RequestParam("emailId") String emailId, @RequestParam("courseName") String courseName) {
 		courseService.enrollToCourse(name, emailId, courseName);
-		return String.format("Congratulations! %s, you have successfully registered for %s course.", name, courseName);
+		String message = String.format("Congratulations! %s, you have successfully registered for %s course.", name,
+				courseName);
+		return Map.of("message", message);
 	}
 }
