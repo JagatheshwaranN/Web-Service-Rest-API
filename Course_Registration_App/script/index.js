@@ -1,24 +1,83 @@
-// Function to display available courses
+// // Function to display available courses
+// function showAvailableCourses() {
+//     // Fetching the course data from the backend API (http://localhost:8080/courses)
+//     fetch("http://localhost:8080/courses")
+//         .then((response) => {
+//             if(!response.ok) {
+//                 throw new Error(`HTTP Error! status: ${response.status}`);
+//             }
+//             return response.json();
+//         }) // Convert the response to JSON
+//         .then((courses) => { // Once the data is received, we loop through the courses
+//             const courseSection = document.getElementById("courseSection");
+//             const dataTable = document.getElementById("courseTable"); // Get the table element where data will be displayed
+//             if(courses.length === 0) {
+//                 dataTable.innerHTML = `<tr><td colspan="4">No courses available at the moment.</td></tr>`;
+//             }else{
+//             courses.forEach(course => { // Loop over each course
+//                 // Create a new table row with the course details
+//                 var row = `<tr>
+//                     <td>${course.courseId}</td> <!-- Course ID -->
+//                     <td>${course.courseName}</td> <!-- Course Name -->
+//                     <td>${course.trainer}</td> <!-- Trainer Name -->
+//                     <td>${course.durationInWeeks}</td> <!-- Duration in weeks -->
+//                 </tr>`;
+//                 dataTable.innerHTML += row; // Append the row to the table body (courseTable)
+//             });
+//             }
+//             courseSection.style.display = 'block';
+//         })
+//         .catch((error) => { // Handle errors if the fetch fails
+//             console.error('Error fetching courses:', error);
+//             //showErrorMessage("⚠️ Application is down. Please try again later.");
+//             window.location.href = "app-down.html";
+//         });
+// }
+
 function showAvailableCourses() {
-    // Fetching the course data from the backend API (http://localhost:8080/courses)
-    fetch("http://localhost:8080/courses")
-        .then((response) => response.json()) // Convert the response to JSON
-        .then((courses) => { // Once the data is received, we loop through the courses
-            const dataTable = document.getElementById("courseTable"); // Get the table element where data will be displayed
-            courses.forEach(course => { // Loop over each course
-                // Create a new table row with the course details
-                var row = `<tr>
-                    <td>${course.courseId}</td> <!-- Course ID -->
-                    <td>${course.courseName}</td> <!-- Course Name -->
-                    <td>${course.trainer}</td> <!-- Trainer Name -->
-                    <td>${course.durationInWeeks}</td> <!-- Duration in weeks -->
-                </tr>`;
-                dataTable.innerHTML += row; // Append the row to the table body (courseTable)
-            });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => {
+        controller.abort(); // Abort the fetch if it takes too long
+    }, 3000); // 3 seconds timeout
+
+    fetch("http://localhost:8080/courses", { signal: controller.signal })
+        .then((response) => {
+            clearTimeout(timeout); // Clear timeout if response is received
+            if (!response.ok) {
+                throw new Error(`HTTP Error! status: ${response.status}`);
+            }
+            return response.json();
         })
-        .catch((error) => { // Handle errors if the fetch fails
+        .then((courses) => {
+            const courseSection = document.getElementById("courseSection");
+            const dataTable = document.getElementById("courseTable");
+
+            if (courses.length === 0) {
+                dataTable.innerHTML = `<tr><td colspan="4">No courses available at the moment.</td></tr>`;
+            } else {
+                courses.forEach(course => {
+                    const row = `<tr>
+                        <td>${course.courseId}</td>
+                        <td>${course.courseName}</td>
+                        <td>${course.trainer}</td>
+                        <td>${course.durationInWeeks}</td>
+                    </tr>`;
+                    dataTable.innerHTML += row;
+                });
+            }
+
+            courseSection.style.display = 'block';
+        })
+        .catch((error) => {
             console.error('Error fetching courses:', error);
+            window.location.href = "app-down.html";
         });
+}
+
+
+function showErrorMessage(message) {
+    const dataTable = document.getElementById("courseTable");
+    dataTable.innerHTML = `<tr><td colspan="4" style="color: red; text-align: center;">${message}</td></tr>`;
 }
 
 // Function to display enrolled students
@@ -50,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Get the div to show response messages (if you were showing it on the same page)
     const responseDiv = document.getElementById("responseMessage");
 
+    if (form) {
     // Add a submit event listener to the form
     form.addEventListener("submit", function (event) {
         // Prevent default form submission behavior (which reloads the page)
@@ -85,15 +145,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // responseDiv.style.display = "block";
         });
     });
+}
 });
 
 // This part will run on the success page (register-success.html)
-document.addEventListener("DOMContentLoaded", function () {
-    // Retrieve the message from sessionStorage
-    const message = sessionStorage.getItem("registrationMessage");
-
+document.addEventListener("DOMContentLoaded", function () {    
     // Get the box element where we will display the message
     const box = document.getElementById("messageBox");
+
+    if (box) { 
+    // Retrieve the message from sessionStorage
+    const message = sessionStorage.getItem("registrationMessage");
 
     // If a message was found in sessionStorage
     if (message) {
@@ -105,4 +167,5 @@ document.addEventListener("DOMContentLoaded", function () {
         box.textContent = "No registration message found.";
         box.style.display = "block";
     }
+}
 });

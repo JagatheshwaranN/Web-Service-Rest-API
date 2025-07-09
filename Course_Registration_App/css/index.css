@@ -272,3 +272,13 @@ th, td {
     margin-top: 20px;
     display: none;
 }
+
+.error-message {
+    background-color: #e3f2fd;
+    border-left: 5px solid #0277bd;
+    padding: 20px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 20px;
+}
