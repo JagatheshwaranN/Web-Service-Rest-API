@@ -35,14 +35,8 @@
 // }
 
 function showAvailableCourses() {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => {
-        controller.abort(); // Abort the fetch if it takes too long
-    }, 3000); // 3 seconds timeout
-
-    fetch("http://localhost:8080/courses", { signal: controller.signal })
+    fetch("http://localhost:8080/courses")
         .then((response) => {
-            clearTimeout(timeout); // Clear timeout if response is received
             if (!response.ok) {
                 throw new Error(`HTTP Error! status: ${response.status}`);
             }
@@ -65,7 +59,6 @@ function showAvailableCourses() {
                     dataTable.innerHTML += row;
                 });
             }
-
             courseSection.style.display = 'block';
         })
         .catch((error) => {
@@ -84,9 +77,20 @@ function showErrorMessage(message) {
 function showEnrolledStudents() {
     // Fetching the enrolled students data from the backend API (http://localhost:8080/courses/enrolled)
     fetch("http://localhost:8080/courses/enrolled")
-        .then((response) => response.json()) // Convert the response to JSON
+        .then((response) => {
+            if(!response.ok) {
+                throw new Error(`HTTP Error! status : ${response.status}`);
+            }
+            return response.json()
+        }) // Convert the response to JSON
         .then((students) => { // Once the data is received, we loop through the students
+
+            const studentSection = document.getElementById("studentSection");
             const dataTable = document.getElementById("studentTable"); // Get the table element where data will be displayed
+
+            if(students.length === 0) {
+                dataTable.innerHTML = `<tr><td colspan="4">No students enrolled at the moment.</td></tr>`;
+            } else {
             students.forEach(student => { // Loop over each student
                 // Create a new table row with the student's details
                 var row = `<tr>
@@ -96,9 +100,12 @@ function showEnrolledStudents() {
                 </tr>`;
                 dataTable.innerHTML += row; // Append the row to the table body (studentTable)
             });
+        }
+        studentSection.style.display = 'block';
         })
         .catch((error) => { // Handle errors if the fetch fails
             console.error('Error fetching enrolled students:', error);
+            window.location.href = "app-down.html";
         });
 }
 
