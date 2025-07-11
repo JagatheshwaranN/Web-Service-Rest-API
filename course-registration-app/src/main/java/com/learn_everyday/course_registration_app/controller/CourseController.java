@@ -39,4 +39,9 @@ public class CourseController {
 				courseName);
 		return Map.of("message", message);
 	}
+
+	@GetMapping("health")
+	public String checkHealth() {
+		return "Application is up and running.";
+	}
 }

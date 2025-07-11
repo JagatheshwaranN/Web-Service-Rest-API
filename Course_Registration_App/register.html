@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <!-- <script type="text/javascript" src="script/index.js"></script> -->
+     <script type="module" src="script/index.js"></script>
     <title>Register Course</title>
 </head>
 <body>
@@ -33,7 +35,7 @@
             <br><br>
             <button type="submit">Register</button>
         </form> -->
-        <form id="registrationForm">
+        <form id="registrationForm" style="display: none;">
             <label for="name">Enter your Name</label>
             <input type="text" name="name" required><br><br>
             <label for="email">Enter your Email Id</label>
@@ -52,6 +54,10 @@
     <footer>
         <p>Course Registration &copy; Copyright 2025</p>
     </footer>
-    <script type="text/javascript" src="script/index.js"></script>
+    <!-- <script type="text/javascript">
+        window.onload = function() {
+            addStudent();
+        }
+    </script> -->
 </body>
 </html>
