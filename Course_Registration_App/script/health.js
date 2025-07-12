@@ -1,20 +1,13 @@
-const BACKEND_HEALTH_KEY = "backendHealthStatus";
-const HEALTH_CHECK_TIMESTAMP = "backendHealthCheckedAt";
-const HEALTH_TIMEOUT = 10000;
-
 export async function checkBackendHealth() {
-  const lastCheck = parseInt(
-    sessionStorage.getItem(HEALTH_CHECK_TIMESTAMP) || "0",
-    10
-  );
+  const lastCheck = parseInt(sessionStorage.getItem("backendHealthCheckedAt") || "0", 10);
   const now = Date.now();
 
-  if (now - lastCheck < HEALTH_TIMEOUT) {
-    return sessionStorage.getItem(BACKEND_HEALTH_KEY) === "ok";
+  if (now - lastCheck < 10000) {
+    return sessionStorage.getItem("backendHealthStatus") === "ok";
   }
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 sec timeout
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
 
   try {
     const response = await fetch("http://localhost:8080/health", {
@@ -24,15 +17,18 @@ export async function checkBackendHealth() {
     clearTimeout(timeoutId);
 
     if (response.ok) {
-      sessionStorage.setItem(BACKEND_HEALTH_KEY, "ok");
-      sessionStorage.setItem(HEALTH_CHECK_TIMESTAMP, now.toString());
+      sessionStorage.setItem("backendHealthStatus", "ok");
+      sessionStorage.setItem("backendHealthCheckedAt", now.toString());
       return true;
     }
   } catch (err) {
     console.error("Health Check Failed:", err.name === 'AbortError' ? 'Request timed out' : err);
   }
 
-  sessionStorage.setItem(BACKEND_HEALTH_KEY, "fail");
-  sessionStorage.setItem(HEALTH_CHECK_TIMESTAMP, now.toString());
+  sessionStorage.setItem("backendHealthStatus", "fail");
+  sessionStorage.setItem("backendHealthCheckedAt", now.toString());
   return false;
 }
+
+// 👇 Auto-run when imported
+checkBackendHealth();

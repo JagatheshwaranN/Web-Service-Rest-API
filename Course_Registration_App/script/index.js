@@ -1,4 +1,4 @@
-import { checkBackendHealth } from "./health";
+// import { checkBackendHealth } from "./health.js";
 
 // // Function to display available courses
 // function showAvailableCourses() {
@@ -169,22 +169,29 @@ function showEnrolledStudents() {
 //     });
 // };
 
-async function addStudent() {
+function addStudent() {
   const form = document.getElementById("registrationForm");
   const responseDiv = document.getElementById("responseMessage");
 
-  const backendUp = await checkBackendHealth();
+  const backendUp = sessionStorage.getItem("backendHealthStatus") === "ok";
+  const currentPage = window.location.pathname;
 
-  if (!backendUp) {
+  // if (!backendUp) {
+  //   console.error("Backend is down. Redirecting to app-down page.");
+  //   window.location.href = "app-down.html";
+  //   return;
+  // }
+
+  if (!backendUp && !currentPage.includes("app-down.html")) {
     console.error("Backend is down. Redirecting to app-down page.");
     window.location.href = "app-down.html";
     return;
   }
 
+  if (form) {
   // Show the form
   form.style.display = "block";
-
-  if (form) {
+  
     // Add a submit event listener to the form
     form.addEventListener("submit", function (event) {
       event.preventDefault();
