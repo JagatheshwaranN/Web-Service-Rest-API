@@ -25,7 +25,7 @@ public class StudentController {
 		return studentList;
 	}
 
-	@PostMapping("/students")
+	@PostMapping("/admin/students")
 	public void addStudent(@RequestBody Student student) {
 		studentList.add(student);
 	}

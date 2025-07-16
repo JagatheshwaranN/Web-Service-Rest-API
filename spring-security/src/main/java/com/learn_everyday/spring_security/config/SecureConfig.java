@@ -23,13 +23,26 @@ public class SecureConfig {
 	@Bean
 	public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity.csrf(customizer -> customizer.disable())
-				.authorizeHttpRequests(request -> request.anyRequest().authenticated())
+				.authorizeHttpRequests(request -> request.requestMatchers("/admin/**").hasRole("ADMIN")
+						.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN").requestMatchers("/public/**")
+						.permitAll().anyRequest().authenticated())
 				// httpSecurity.formLogin(Customizer.withDefaults());
 				.httpBasic(Customizer.withDefaults())
 				// HTTP Session Management has issue with Form Login. It will ask for login
 				// every time.
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
 	}
+
+//	@Bean
+//	public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+//		return httpSecurity.csrf(customizer -> customizer.disable())
+//				.authorizeHttpRequests(request -> request.anyRequest().authenticated())
+//				// httpSecurity.formLogin(Customizer.withDefaults());
+//				.httpBasic(Customizer.withDefaults())
+//				// HTTP Session Management has issue with Form Login. It will ask for login
+//				// every time.
+//				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
+//	}
 
 //	@Bean
 //	public UserDetailsService getUserDetailsService() {
