@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learn_everyday.course_registration_app.entity.Course;
-import com.learn_everyday.course_registration_app.entity.CourseRegistry;
 import com.learn_everyday.course_registration_app.service.CourseService;
 
 @RestController
@@ -26,10 +25,10 @@ public class CourseController {
 		return courseService.getCourses();
 	}
 
-	@GetMapping("courses/enrolled")
-	public List<CourseRegistry> getAvailableEnrolledCourseDetails() {
-		return courseService.getEnrolledCourses();
-	}
+//	@GetMapping("courses/enrolled")
+//	public List<CourseRegistry> getAvailableEnrolledCourseDetails() {
+//		return courseService.getEnrolledCourses();
+//	}
 
 	@PostMapping("courses/register")
 	public Map<String, String> registerToCourse(@RequestParam("name") String name,
@@ -44,4 +43,5 @@ public class CourseController {
 	public String checkHealth() {
 		return "Application is up and running.";
 	}
+
 }
