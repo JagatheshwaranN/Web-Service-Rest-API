@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.learn_everyday.course_registration_app.secure.JwtTokenizer;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = { "http://localhost:5500", "http://127.0.0.1:5500" })
 public class AuthController {
 
 	@Autowired

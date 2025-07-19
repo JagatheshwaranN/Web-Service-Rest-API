@@ -23,11 +23,17 @@ public class JwtTokenizer {
 	}
 
 	public boolean validateToken(String token, UserDetails userDetails) {
-		return extractUserName(token).equals(userDetails.getUsername());
+		return extractUserName(token).equals(userDetails.getUsername()) && !isTokenExpired(token);
 	}
 
 	public String extractUserName(String token) {
 		return Jwts.parser().verifyWith(SECRET_KEY).build().parseSignedClaims(token).getPayload().getSubject();
+	}
+
+	private boolean isTokenExpired(String token) {
+		Date expiry = Jwts.parser().verifyWith(SECRET_KEY).build().parseSignedClaims(token).getPayload()
+				.getExpiration();
+		return expiry.before(new Date());
 	}
 
 }
