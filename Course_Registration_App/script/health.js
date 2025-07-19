@@ -8,10 +8,15 @@ export async function checkBackendHealth() {
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 5000);
-
+  const token = sessionStorage.getItem("jwtToken");
   try {
     const response = await fetch("http://localhost:8080/health", {
       signal: controller.signal,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }  
     });
 
     clearTimeout(timeoutId);

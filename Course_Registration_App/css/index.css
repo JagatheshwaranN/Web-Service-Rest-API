@@ -164,6 +164,7 @@ form {
 
 /* Form input and select field styling */
 input[type="text"],
+input[type="password"],
 input[type="email"],
 select {
     width: 100%; /* Full width for inputs and select */

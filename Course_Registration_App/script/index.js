@@ -1,8 +1,45 @@
+function handleLogin() {
+  const loginForm = document.getElementById("loginForm");
+  const message = document.getElementById("loginMessage");
+  if(!loginForm) {
+    console.warn("Login form not found on this page.");
+    return;
+  }
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    try {
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({username, password})
+      });
+
+      const result = await response.json();
+
+      if(response.ok) {
+        sessionStorage.setItem("jwtToken", result.token);
+        console.log('Token: ', result.token);
+        message.innerText = "Login successful! Redirecting...";
+        setTimeout(() => window.location.href = "index.html", 1000);
+      } else {
+        message.innerText = result.message || 'Login failed!';
+      }
+    }catch(err) {
+      console.error('Login error: ', err);
+      message.innerText = 'Server error. Try agai later.';
+    }
+  });
+}
+
 function showAvailableCourses() {
   
   if (redirectIfBackendDown()) return;
 
-  fetch("http://localhost:8080/courses")
+  authFetch("http://localhost:8080/courses")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP Error! status: ${response.status}`);
@@ -39,7 +76,7 @@ function showEnrolledStudents() {
 
   if (redirectIfBackendDown()) return;
 
-  fetch("http://localhost:8080/courses/enrolled")
+  authFetch("http://localhost:8080/admin/courses/enrolled")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP Error! status : ${response.status}`);
@@ -83,8 +120,11 @@ function addStudent() {
 
       const formData = new FormData(form);
 
-      fetch("http://localhost:8080/courses/register", {
+      authFetch("http://localhost:8080/courses/register", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: new URLSearchParams(formData),
       })
         .then((response) => {
@@ -119,8 +159,42 @@ function redirectIfBackendDown() {
   return false;
 }
 
+function handleLogout() {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if(logoutBtn) {
+    logoutBtn.addEventListener("click", ()=> {
+      sessionStorage.removeItem("jwtToken");
+      window.location.href = "login.html";
+    });
+  }
+}
+
+function authFetch(url, options = {}) {
+  const token = sessionStorage.getItem("jwtToken");
+  if (!token) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  const headers = {
+    ...options.headers,
+    Authorization: `Bearer ${token}`,
+  };
+
+  const config = {
+    ...options,
+    headers,
+  };
+
+  return fetch(url, config);
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   const currentPage = window.location.pathname;
+
+  if (currentPage.includes("/login.html")) {
+  handleLogin();
+  }
 
   if (currentPage.includes("/register.html")) {
     addStudent();
@@ -134,6 +208,10 @@ window.addEventListener("DOMContentLoaded", () => {
     showEnrolledStudents();
   }
 
+  if (currentPage.includes("/index.html")) {
+    handleLogout();
+  }
+  
   if (currentPage.includes("/register-success.html")) {
     const box = document.getElementById("messageBox");
     if (box) {
