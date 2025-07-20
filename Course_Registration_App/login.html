@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="css/index.css" type="text/css">
-  <script type="text/javascript" src="script/index.js"></script>
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+  <script type="text/javascript" src="script/app.js"></script>
   <title>Login</title>
 </head>
 <body>
@@ -32,41 +32,5 @@
       <p id="loginMessage"></p>
     </section>
   </main>
-
-  <script>
-    const loginForm = document.getElementById('loginForm');
-    const message = document.getElementById('loginMessage');
-
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      // const role = document.getElementById('role').value;
-
-      try {
-        const response = await fetch('http://localhost:8080/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username, password })
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          sessionStorage.setItem('jwtToken', result.token);
-          message.innerText = "Login successful! Redirecting...";
-          setTimeout(() => window.location.href = "index.html", 1000);
-        } else {
-          message.innerText = result.message || "Login failed!";
-        }
-      } catch (err) {
-        console.error('Login error:', err);
-        message.innerText = "Server error. Try again later.";
-      }
-    });
-  </script>
 </body>
 </html>

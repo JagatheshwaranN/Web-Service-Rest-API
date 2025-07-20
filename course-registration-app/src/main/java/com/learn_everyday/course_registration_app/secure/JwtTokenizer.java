@@ -18,7 +18,7 @@ public class JwtTokenizer {
 
 	public String generateToken(UserDetails userDetails) {
 		return Jwts.builder().subject(userDetails.getUsername()).issuedAt(new Date())
-				.expiration(new Date(System.currentTimeMillis() * 1000 * 60 * 60)).signWith(SECRET_KEY, Jwts.SIG.HS256)
+				.expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)).signWith(SECRET_KEY, Jwts.SIG.HS256)
 				.compact();
 	}
 

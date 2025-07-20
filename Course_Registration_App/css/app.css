@@ -1,0 +1,285 @@
+/* Universal Reset for all elements */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
+}
+
+/* General settings for html and body */
+html,
+body {
+    height: 100%; /* Make the body and html elements fill the entire viewport */
+    font-family: 'Poppins', sans-serif; /* Set font family */
+    color: #333; /* Set default text color */
+    line-height: 1.6; /* Set line height for better readability */
+}
+
+/* Body layout using Flexbox */
+body {
+    display: flex; /* Use flexbox for body */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+/* Header styles */
+header {
+    background-color: #93b7e6; /* Blue background for header */
+    color: #fff; /* White text */
+    padding: 10px 20px; /* Padding for header content */
+}
+
+/* Header navigation styles */
+header nav ul {
+    list-style: none; /* Remove default list styles */
+    display: flex; /* Display nav items in a row */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    justify-content: center; /* Center the nav items */
+}
+
+/* Nav list item styling */
+header nav ul li {
+    margin-right: 20px; /* Add space between nav items */
+}
+
+/* Link styling */
+header nav ul li a {
+    color: #fff; /* White text color for links */
+    text-decoration: none; /* Remove underlines from links */
+    font-weight: 600; /* Set font weight to bold */
+}
+
+/* Hover effect for links */
+header nav ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Main content area styling */
+main {
+    flex: 1; /* Allow main content to fill available space */
+    padding: 20px; /* Add padding around main content */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+/* Heading styling */
+h1 {
+    text-align: center; /* Center-align heading */
+    color: #444; /* Darker color for heading */
+    margin-bottom: 20px; /* Add space below heading */
+}
+
+/* Grid layout for items */
+.grid-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(5, 1fr); /* 5 equally spaced columns */
+    gap: 20px; /* Gap between grid items */
+    justify-items: center; /* Center-align grid items */
+}
+
+/* Grid item styling */
+.grid-item {
+    width: 170px; /* Fixed width for grid items */
+    height: 170px; /* Fixed height for grid items */
+    border-radius: 50%; /* Make items circular */
+    background-color: #007bff; /* Blue background for items */
+    color: #fff; /* White text color */
+    display: flex; /* Use flexbox inside grid item */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    font-size: 14px; /* Smaller text size */
+    font-weight: 600; /* Bold text */
+    text-align: center; /* Center-align text */
+    text-decoration: none; /* Remove text underline */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for items */
+    transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for grid items */
+.grid-item:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge the item */
+}
+
+/* Footer styles */
+footer {
+    background-color: #93b7e6; /* Blue background for footer */
+    color: #000; /* Black text */
+    text-align: center; /* Center-align footer text */
+    padding: 10px 0; /* Padding for footer */
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Container for items with flexible layout */
+.container {
+    display: flex; /* Use flexbox for container */
+    justify-content: space-between; /* Space between items */
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Maximum width for larger screens */
+    gap: 50px; /* Space between items */
+}
+
+/* Button styling */
+.button {
+    padding: 8px 16px; /* Smaller padding for buttons */
+    font-size: 14px; /* Smaller text for buttons */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    width: 200px; /* Fixed width for the buttons */
+}
+
+/* Button hover effect */
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Button active effect */
+.button:active {
+    background-color: #004080; /* Even darker blue when clicked */
+}
+
+/* Center the form in the middle of the page */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    align-items: center; /* Center the form vertically */
+    /* height: calc(100vh - 80px); Account for the header height */
+}
+
+/* Form styling */
+form {
+    background-color: #0277bd; /* Blue background for the form */
+    padding: 20px; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    width: 100%; /* Full width */
+    max-width: 400px; /* Set a max-width to ensure it doesn't stretch too much */
+    color: white; /* White text inside the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the form */
+}
+
+/* Form input and select field styling */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%; /* Full width for inputs and select */
+    padding: 10px; /* Padding inside the fields */
+    margin: 5px 0 10px; /* Margin for spacing between fields */
+    border-radius: 4px; /* Rounded corners for fields */
+    border: 1px solid #ccc; /* Light border */
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    width: 100%; /* Full width for the button */
+    padding: 12px; /* Padding inside the button */
+    background-color: #01579b; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Larger font size for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+/* Hover effect for submit button */
+button[type="submit"]:hover {
+    background-color: #0288d1; /* Lighter blue on hover */
+}
+
+/* Active state for submit button */
+button[type="submit"]:active {
+    background-color: #0277bd; /* Same blue as the form on click */
+}
+
+/* Label styling */
+label {
+    font-size: 16px; /* Larger font for labels */
+    margin-bottom: 5px; /* Space below the label */
+    display: block; /* Block display for labels */
+}
+
+/* Spacing for form elements */
+form > label,
+form > input,
+form > select {
+    margin-bottom: 5px; /* Space between form elements */
+}
+
+
+/* Style for the table */
+table {
+    width: 100%; /* Table takes full width */
+    border-collapse: collapse; /* Collapses borders for cleaner look */
+    margin: 20px 0; /* Margin above and below table */
+    border: 1px solid #ddd; /* Border around the table */
+}
+
+/* Header row styles */
+th {
+    background-color: #0277bd; /* Blue background for header */
+    color: white; /* White text color */
+    padding: 12px 15px; /* Padding inside header cells */
+    text-align: left; /* Left-align text */
+    border: 1px solid #ddd; /* Border around header cells */
+}
+
+/* Table row styles */
+tr:nth-child(even) {
+    background-color: #e3f2fd; /* Light blue for even rows */
+}
+
+tr:nth-child(odd) {
+    background-color: #f5f5f5; /* Light grey for odd rows */
+}
+
+/* Table data cells */
+td {
+    padding: 12px 15px; /* Padding inside cells */
+    text-align: left; /* Left-align text */
+    border: 1px solid #ddd; /* Border around cells */
+}
+
+/* Table hover effect for rows */
+tr:hover {
+    background-color: #bbdefb; /* Light blue on hover */
+}
+
+/* Ensure the columns size to fit the content */
+th, td {
+    word-wrap: break-word; /* Break long words if needed */
+    white-space: nowrap; /* Prevent breaking into multiple lines */
+}
+
+/* Optional: Adds a small gap between the borders for cleaner look */
+th, td {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.message-box {
+    background-color: #e3f2fd;
+    border-left: 5px solid #0277bd;
+    padding: 20px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 20px;
+    display: none;
+}
+
+.error-message {
+    background-color: #e3f2fd;
+    border-left: 5px solid #0277bd;
+    padding: 20px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top: 20px;
+}

@@ -45,8 +45,10 @@ public class JwtFilter extends OncePerRequestFilter {
 				UserDetails userDetails = myUserDetailsService.loadUserByUsername(username);
 
 				if (jwtTokenizer.validateToken(token, userDetails)) {
+//					UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+//							userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
 					UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-							userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
+							userDetails, null, userDetails.getAuthorities());
 					authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 					SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 				}
@@ -58,6 +60,9 @@ public class JwtFilter extends OncePerRequestFilter {
 			responseMap.put("error", "Invalid Token.");
 			ObjectMapper mapper = new ObjectMapper();
 			String jsonString = mapper.writeValueAsString(responseMap);
+			response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+			response.setHeader("Access-Control-Allow-Credentials", "true");
+			response.setContentType("application/json");
 			response.getWriter().write(jsonString);
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			return;

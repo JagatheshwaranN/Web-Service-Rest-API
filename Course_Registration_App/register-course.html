@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css" type="text/css">
+    <script type="text/javascript" src="script/app.js"></script>
+    <title>Register Course</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html"><button class="button" name="home">Home</button></a></li>
+                <li><a href="register-course.html"><button class="button" name = "register">Register Course</button></a></li>
+                <li><a href="available-courses.html"><button class="button" name="courses">Available Courses</button></a></li>
+                <li id="adminButton"><a href="enrolled-students.html"><button class="button" name="students">Enrolled Students</button></a></li>
+                <li><button id="logoutBtn" class="button" name="logout">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+    </header>
+    <main>
+        <form id="registrationForm" style="display: none;">
+            <label for="name">Enter your Name</label>
+            <input type="text" name="name" required><br><br>
+            <label for="email">Enter your Email Id</label>
+            <input type="email" name="emailId" required><br><br>
+            <label for="course">Choose a Course</label>
+            <select id="course" name="courseName" required>
+                <option value="">-- Select Course --</option>
+                <option value="Java">Java</option>l̥
+                <option value="Python">Python</option>
+                <option value="Spring Boot">Spring Boot</option>
+            </select><br><br>
+            <button type="submit">Register</button>
+        </form>
+        <div id="responseMessage" class="message-box"></div>
+    </main>
+    <footer>
+        <p>Course Registration &copy; Copyright 2025</p>
+    </footer>
+</body>
+</html>

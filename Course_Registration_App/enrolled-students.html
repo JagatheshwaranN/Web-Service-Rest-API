@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css" type="text/css">
+    <script type="text/javascript" src="script/app.js"></script>
+    <title>Enrolled Students</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html"><button class="button" name="home">Home</button></a></li>
+                <li><a href="register-course.html"><button class="button" name = "register">Register Course</button></a></li>
+                <li><a href="available-courses.html"><button class="button" name="courses">Available Courses</button></a></li>
+                <li id="adminButton"><a href="enrolled-students.html"><button class="button" name="students">Enrolled Students</button></a></li>
+                <li><button id="logoutBtn" class="button" name="logout">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="studentSection" style="display: none;">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email Id</th>
+                    <th>Course Name</th>
+                </tr>
+                <tbody id="studentTable"></tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>Course Registration &copy; Copyright 2025</p>
+    </footer>
+    <!-- <script type="text/javascript">
+        window.onload = function() {
+            showEnrolledStudents();
+        }
+    </script> -->
+</body>
+</html>
