@@ -11,7 +11,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "Users")
+@Entity
+@Table(name = "Users")
 public class User {
 
     @Id
@@ -19,6 +20,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Role> roles = new HashSet<>();
 
