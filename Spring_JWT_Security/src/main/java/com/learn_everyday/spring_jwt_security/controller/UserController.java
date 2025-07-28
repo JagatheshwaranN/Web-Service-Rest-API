@@ -32,7 +32,7 @@ public class UserController {
             try {
                 if (jwtUtil.isTokenValid(jwtToken)) {
                     String username = jwtUtil.extractUsername(jwtToken);
-                    Set<String> roles = jwtUtil.extractRoles(token);
+                    Set<String> roles = jwtUtil.extractRoles(jwtToken);
                     if (roles.contains(adminRole)) {
                         return ResponseEntity.ok("Welcome " + username + ", Here is the " + roles + " specific data.");
                     } else if (roles.contains(userRole)) {
